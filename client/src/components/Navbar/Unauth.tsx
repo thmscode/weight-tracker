@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 
 const UNAUTH_ROUTES = [
   { title: 'LOGIN', href: '/login' },
-  { title: 'REGISTER', href: '/register' }
+  { title: 'SIGNUP', href: '/signup' }
 ];
 
 const Unauth = () => {

@@ -4,6 +4,8 @@ import ErrorPage from './pages/ErrorPage';
 import Homepage from './pages/Homepage';
 import BMI from './pages/BMI';
 import Workouts from './pages/Workouts';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -14,6 +16,8 @@ const router = createBrowserRouter([
       { path: "/", element: <Homepage /> },
       { path: "/bmi", element: <BMI /> },
       { path: "/workouts", element: <Workouts /> },
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Signup /> },
     ]
   },
 ]);
