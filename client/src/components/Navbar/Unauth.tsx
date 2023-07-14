@@ -9,8 +9,9 @@ const UNAUTH_ROUTES = [
 const Unauth = () => {
   return (
     <Stack direction='row' spacing={3}>
-      {UNAUTH_ROUTES.map(route => (
+      {UNAUTH_ROUTES.map((route, index) => (
         <Button
+          key={index}
           href={route.href}
           sx={{
             color: 'inherit',

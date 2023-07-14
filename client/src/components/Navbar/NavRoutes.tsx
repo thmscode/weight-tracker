@@ -9,8 +9,9 @@ const NAV_ROUTES = [
 const NavRoutes = () => {
   return (
     <Stack direction='row' spacing={3} sx={{ flexGrow: 1 }}>
-      {NAV_ROUTES.map(route => (
+      {NAV_ROUTES.map((route, index) => (
         <Button
+          key={index}
           href={route.href}
           sx={{
             color: 'inherit',
