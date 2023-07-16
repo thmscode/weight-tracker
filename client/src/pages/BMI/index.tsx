@@ -2,26 +2,10 @@ import ContentContainer from "../../components/ContentContainer";
 import {
   Box,
   Link,
-  List,
-  ListItem,
   Typography
 } from "@mui/material";
 import SubHeader from "./SubHeader";
-
-const HEALTH_ISSUES = [
-  'High blood pressure (hypertension)',
-  'High LDL cholesterol, low HDL cholesterol, or high levels of triglycerides',
-  'Type 2 diabetes',
-  'Coronary heart disease',
-  'Stroke',
-  'Gallbladder disease',
-  'Osteoarthritis (a breakdown of cartilage and bone within a joint)',
-  'Sleep apnea and breathing problems',
-  'Many types of cancer',
-  'Low quality of life',
-  'Mental illness such as clinical depression, anxiety, and other mental disorders',
-  'Body pain and difficulty with physical functioning'
-];
+import CalculatorTabs from "./CalculatorTabs";
 
 const BMI = () => {
   return (
@@ -34,7 +18,7 @@ const BMI = () => {
           It is widely used to measure how healthy an individual's weight is, given their height. Specifically, the value returned by the calculation is used to categorize whether a person is under-weight,
           normal weight, over-weight, or obese. However, BMI should not be used by bodybuilders, long-distance athletes, pregnant woment, the elderly, or young children. This is because
           BMI does not take into account whether the weight is carried as muscle or fat.
-          <Typography sx={{ fontWeight: 600, display: "inline" }}> BMI does not diagnose the health of an individual. It is simply a screening tool.</Typography>
+          <Typography component='span' sx={{ fontWeight: 600, display: "inline" }}> BMI does not diagnose the health of an individual. It is simply a screening tool.</Typography>
         </Typography>
       </Box>
       <Box mb={3}>
@@ -43,12 +27,12 @@ const BMI = () => {
           Another way to estimate your potential disease risk is to measure your waist circumference. Excessive abdominal fat may be serious because it places you at greater risk for developing obesity-related
           conditions, such as Type 2 Diabetes, high blood pressure, and coronary artery disease. You waistline may be telling you that you have a higher risk of developing obesity-related conditions if you are:
           (1) A man whose waist circumference is more than 40 inches, or (2) A non-pregnant woman whose waist circumference is more than 35 inches.
-          <Typography sx={{ fontWeight: 600, display: "inline" }}> Waist circumference does not diagnose the health of an individual either. It is also simply a screening tool.</Typography>
+          <Typography component='span' sx={{ fontWeight: 600, display: "inline" }}> Waist circumference does not diagnose the health of an individual either. It is also simply a screening tool.</Typography>
         </Typography>
       </Box>
       <Box mb={3}>
         <SubHeader text='BMI Calculator' />
-        {/* calculator goes here */}
+        <CalculatorTabs />
       </Box>
       <Box mb={3}>
         <SubHeader text='Importance of a Healthy Weight' />
@@ -73,15 +57,6 @@ const BMI = () => {
           Being physically active and eating fewer calories will help you lose weight and keep the weight off over time. While people vary in the amount of physical activity they need for weight control, many can
           maintain their weight by doing 150 to 300 minutes (2.5 to 5 hours) of moderate-intensity physical activity every week. However, people who want to lose more weight and keep it off may need to be physically
           active for more than 300 minutes (5 hours) per week.
-        </Typography>
-      </Box>
-      <Box mb={3}>
-        <SubHeader text='Health Effects & Risks of Obesity' />
-        <Typography paragraph={true}>
-          People who are overweight or obese*, compared to those with a healthy weight, are at an increased risk for many serious disease and health conditions. These include:
-          <List sx={{ margin: 0, padding: 0, listStyleType: 'disc', pl: 4 }}>
-            {HEALTH_ISSUES.map((issue, index) => <ListItem sx={{ display: 'list-item' }} key={index}>{issue}</ListItem>)}
-          </List>
         </Typography>
       </Box>
       <Box mb={3} sx={{ whiteSpace: 'pre-wrap' }}>
