@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Box, Tab, Tabs } from '@mui/material';
 import Metric from './Metric';
+import Imperial from './Imperial';
 
 const CalculatorTabs = () => {
   const [value, setValue] = useState<number>(0);
@@ -18,6 +19,7 @@ const CalculatorTabs = () => {
         </Tabs>
       </Box>
       <Metric value={value} index={0} />
+      <Imperial value={value} index={1} />
     </Box>
   );
 }
