@@ -1,26 +1,9 @@
+import { BMIFormValues, BMIFormProps } from '../../types';
 import { Box, Button, TextField } from '@mui/material';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
-import * as Yup from 'yup';
+import { BMI_FORM_VALIDATION } from '../../yup-schemas';
 
-type Values = {
-  height: number;
-  weight: number;
-};
-
-const FORM_VALIDATION = Yup.object().shape({
-  height: Yup.number()
-    .min(1, 'Please enter a valid height')
-    .required('Height is required'),
-  weight: Yup.number()
-    .min(1, 'Please enter a valid weight')
-    .required('Weight is required')
-});
-
-type Props = {
-  handler: (bmi: number) => void;
-}
-
-const MetricForm: React.FC<Props> = ({ handler }) => {
+const MetricForm: React.FC<BMIFormProps> = ({ handler }) => {
   const calculateBMI_MET = (height: number, weight: number): number => {
     const BMI = weight / Math.pow(height / 100, 2);
     return Math.round(BMI * 10) / 10;
@@ -29,10 +12,10 @@ const MetricForm: React.FC<Props> = ({ handler }) => {
   return (
     <Formik
       initialValues={{ height: 0, weight: 0 }}
-      validationSchema={FORM_VALIDATION}
+      validationSchema={BMI_FORM_VALIDATION}
       onSubmit={(
-        values: Values,
-        { setSubmitting }: FormikHelpers<Values>
+        values: BMIFormValues,
+        { setSubmitting }: FormikHelpers<BMIFormValues>
       ) => {
         const BMI = calculateBMI_MET(values.height, values.weight);
         handler(BMI);
