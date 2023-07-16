@@ -1,9 +1,5 @@
 import ContentContainer from "../../components/ContentContainer";
-import {
-  Box,
-  Link,
-  Typography
-} from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import SubHeader from "./SubHeader";
 import CalculatorTabs from "./CalculatorTabs";
 

@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography';
 
 type Props = {
-  text: string
+  text: string;
 };
 
 const SubHeader: React.FC<Props> = ({ text }) => {

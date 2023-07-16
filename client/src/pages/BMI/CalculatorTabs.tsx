@@ -5,9 +5,7 @@ import Calculator from './Calculator';
 const CalculatorTabs = () => {
   const [value, setValue] = useState<number>(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
-  };
+  const handleChange = (event: React.SyntheticEvent, newValue: number): void => setValue(newValue);
 
   return (
     <Box sx={{ width: '60%' }}>

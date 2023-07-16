@@ -11,7 +11,7 @@ const CATEGORIES = [
   { class: 'Normal Weight', value: '18.5 - 24.9' },
   { class: 'Overweight', value: '25.0 - 29.9' },
   { class: 'Obesity', value: '≥30.0' }
-]
+];
 
 const BMIChart = () => {
   return (
