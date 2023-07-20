@@ -18,7 +18,7 @@ const BMIChart = () => {
         <TableBody>
           {CATEGORIES.map((category, index) => (
             <TableRow key={index}>
-              <TableCell key={index * 2 - 1}>{category.class}</TableCell>
+              <TableCell key={index * 2 - 1}>{category.name}</TableCell>
               <TableCell key={index * 2}>{category.value}</TableCell>
             </TableRow>
           ))}
