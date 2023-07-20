@@ -1,10 +1,6 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-
-const NAV_ROUTES = [
-  { title: 'BMI', href: '/bmi' },
-  { title: 'WORKOUTS', href: '/workouts' }
-];
+import { NAV_ROUTES } from '../../utils/constants';
 
 const NavRoutes = () => {
   return (
@@ -12,14 +8,14 @@ const NavRoutes = () => {
       {NAV_ROUTES.map((route, index) => (
         <Button
           key={index}
-          href={route.href}
+          href={route.value}
           sx={{
             color: 'inherit',
             fontSize: '1.125rem',
             letterSpacing: '0.1rem'
           }}
         >
-          {route.title}
+          {route.name}
         </Button>
       ))}
     </Stack>

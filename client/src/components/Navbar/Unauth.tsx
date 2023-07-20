@@ -1,10 +1,6 @@
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-
-const UNAUTH_ROUTES = [
-  { title: 'LOGIN', href: '/login' },
-  { title: 'SIGNUP', href: '/signup' }
-];
+import { UNAUTH_ROUTES } from '../../utils/constants';
 
 const Unauth = () => {
   return (
@@ -12,14 +8,14 @@ const Unauth = () => {
       {UNAUTH_ROUTES.map((route, index) => (
         <Button
           key={index}
-          href={route.href}
+          href={route.value}
           sx={{
             color: 'inherit',
             fontSize: '1.125rem',
             letterSpacing: '0.1rem'
           }}
         >
-          {route.title}
+          {route.name}
         </Button>
       ))}
     </Stack>

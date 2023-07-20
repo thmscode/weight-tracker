@@ -1,5 +1,15 @@
 import { IOption } from "./types";
 
+// Navbar
+export const NAV_ROUTES: IOption[] = [
+  { name: 'BMI', value: '/bmi' },
+  { name: 'WORKOUTS', value: '/workouts' }
+];
+export const UNAUTH_ROUTES: IOption[] = [
+  { name: 'LOGIN', value: '/login' },
+  { name: 'SIGNUP', value: '/signup' }
+];
+
 // BMI Page - BMIChart.tsx
 export const HEADERS: string[] = ['Classification', 'BMI'];
 export const CATEGORIES: IOption[] = [
