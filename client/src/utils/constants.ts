@@ -1,6 +1,8 @@
+import { IOption } from "./types";
+
 // BMI Page - BMIChart.tsx
-export const HEADERS = ['Classification', 'BMI'];
-export const CATEGORIES = [
+export const HEADERS: string[] = ['Classification', 'BMI'];
+export const CATEGORIES: IOption[] = [
   { name: 'Underweight', value: '<18.5' },
   { name: 'Normal Weight', value: '18.5 - 24.9' },
   { name: 'Overweight', value: '25.0 - 29.9' },
@@ -8,9 +10,9 @@ export const CATEGORIES = [
 ];
 
 // Workouts Page
-export const YT_URL = 'https://www.youtube.com/results?search_query=';
-export const WORKOUTS_API_URL = 'https://api.api-ninjas.com/v1/exercises';
-export const TYPE_OPTIONS = [
+export const YT_URL: string = 'https://www.youtube.com/results?search_query=';
+export const WORKOUTS_API_URL: string = 'https://api.api-ninjas.com/v1/exercises';
+export const TYPE_OPTIONS: IOption[] = [
   { name: 'Cardio', value: 'cardio' },
   { name: 'Olympic Weightlifting', value: 'olympic_weightlifting' },
   { name: 'Plyometrics', value: 'plyometrics' },
@@ -19,7 +21,7 @@ export const TYPE_OPTIONS = [
   { name: 'Stretching', value: 'stretching' },
   { name: 'Strongman', value: 'strongman' }
 ];
-export const MUSCLE_OPTIONS = [
+export const MUSCLE_OPTIONS: IOption[] = [
   { name: 'Abdominals', value: 'abdominals' },
   { name: 'Abductors', value: 'abductors' },
   { name: 'Adductors', value: 'adductors' },
@@ -37,7 +39,7 @@ export const MUSCLE_OPTIONS = [
   { name: 'Traps', value: 'traps' },
   { name: 'Triceps', value: 'triceps' }
 ];
-export const DIFFICULTY_OPTIONS = [
+export const DIFFICULTY_OPTIONS: IOption[] = [
   { name: 'Beginner', value: 'beginner' },
   { name: 'Intermediate', value: 'intermediate' },
   { name: 'Expert', value: 'expert' }
