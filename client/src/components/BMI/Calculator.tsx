@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import UserBMI from './UserBMI';
 import Chart from './Chart';
 import MetricCalculator from '../Forms/MetricCalculator';
