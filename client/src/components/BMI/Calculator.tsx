@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import UserBMI from './UserBMI';
-import BMIChart from './BMIChart';
-import MetricForm from './MetricForm';
-import ImperialForm from './ImperialForm';
+import Chart from './Chart';
+import MetricCalculator from '../Forms/MetricCalculator';
+import ImperialCalculator from '../Forms/ImperialCalculator';
 
 type Props = {
   value: number;
@@ -20,10 +20,10 @@ const Calculator: React.FC<Props> = ({ value, index }) => {
       {value === index && (
         <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
           {value === 0 ?
-            <MetricForm handler={handleSubmission} /> :
-            <ImperialForm handler={handleSubmission} />}
+            <MetricCalculator handler={handleSubmission} /> :
+            <ImperialCalculator handler={handleSubmission} />}
           <UserBMI bmi={bmi} />
-          <BMIChart />
+          <Chart />
         </Box>
       )}
     </Box>

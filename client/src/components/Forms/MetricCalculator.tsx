@@ -3,9 +3,9 @@ import { Box, Button, TextField } from '@mui/material';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
 import { BMI_FORM_VALIDATION } from '../../utils/yup-schemas';
 
-const ImperialForm: React.FC<BMIFormProps> = ({ handler }) => {
-  const calculateBMI_IMP = (height: number, weight: number): number => {
-    const BMI = (weight / Math.pow(height, 2)) * 703;
+const MetricCalculator: React.FC<BMIFormProps> = ({ handler }) => {
+  const calculateBMI_MET = (height: number, weight: number): number => {
+    const BMI = weight / Math.pow(height / 100, 2);
     return Math.round(BMI * 10) / 10;
   };
 
@@ -17,7 +17,7 @@ const ImperialForm: React.FC<BMIFormProps> = ({ handler }) => {
         values: BMIFormValues,
         { setSubmitting }: FormikHelpers<BMIFormValues>
       ) => {
-        const BMI = calculateBMI_IMP(values.height, values.weight);
+        const BMI = calculateBMI_MET(values.height, values.weight);
         handler(BMI);
         setSubmitting(false);
       }}
@@ -26,7 +26,7 @@ const ImperialForm: React.FC<BMIFormProps> = ({ handler }) => {
         <Form className='BMI-form'>
           <Box>
             <Field
-              label='Height (in)'
+              label='Height (cm)'
               id='height'
               name='height'
               as={TextField}
@@ -40,7 +40,7 @@ const ImperialForm: React.FC<BMIFormProps> = ({ handler }) => {
           </Box>
           <Box>
             <Field
-              label='Weight (lbs)'
+              label='Weight (kg)'
               id='weight'
               name='weight'
               as={TextField}
@@ -59,4 +59,4 @@ const ImperialForm: React.FC<BMIFormProps> = ({ handler }) => {
   );
 }
 
-export default ImperialForm;
+export default MetricCalculator;

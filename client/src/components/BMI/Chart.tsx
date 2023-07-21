@@ -6,7 +6,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { HEADERS, CATEGORIES } from '../../utils/constants';
 
-const BMIChart = () => {
+const Chart = () => {
   return (
     <Box>
       <Table size='medium'>
@@ -28,4 +28,4 @@ const BMIChart = () => {
   );
 }
 
-export default BMIChart;
+export default Chart;
