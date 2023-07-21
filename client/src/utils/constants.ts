@@ -3,7 +3,7 @@ import { IOption } from "./types";
 // Navbar
 export const NAV_ROUTES: IOption[] = [
   { name: 'BMI', value: '/bmi' },
-  { name: 'WORKOUTS', value: '/workouts' }
+  { name: 'EXERCISES', value: '/exercises' }
 ];
 export const UNAUTH_ROUTES: IOption[] = [
   { name: 'LOGIN', value: '/login' },
@@ -20,8 +20,6 @@ export const CATEGORIES: IOption[] = [
 ];
 
 // Workouts Page
-export const YT_URL: string = 'https://www.youtube.com/results?search_query=';
-export const WORKOUTS_API_URL: string = 'https://api.api-ninjas.com/v1/exercises';
 export const TYPE_OPTIONS: IOption[] = [
   { name: 'Cardio', value: 'cardio' },
   { name: 'Olympic Weightlifting', value: 'olympic_weightlifting' },
