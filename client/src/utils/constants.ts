@@ -1,18 +1,18 @@
-import { IOption } from "./types";
+import { NameValueObj } from "./types";
 
 // Navbar
-export const NAV_ROUTES: IOption[] = [
+export const NAV_ROUTES: NameValueObj[] = [
   { name: 'BMI', value: '/bmi' },
   { name: 'EXERCISES', value: '/exercises' }
 ];
-export const UNAUTH_ROUTES: IOption[] = [
+export const UNAUTH_ROUTES: NameValueObj[] = [
   { name: 'LOGIN', value: '/login' },
   { name: 'SIGNUP', value: '/signup' }
 ];
 
 // BMI Page - BMIChart.tsx
 export const HEADERS: string[] = ['Classification', 'BMI'];
-export const CATEGORIES: IOption[] = [
+export const CATEGORIES: NameValueObj[] = [
   { name: 'Underweight', value: '<18.5' },
   { name: 'Normal Weight', value: '18.5 - 24.9' },
   { name: 'Overweight', value: '25.0 - 29.9' },
@@ -20,7 +20,7 @@ export const CATEGORIES: IOption[] = [
 ];
 
 // Workouts Page
-export const TYPE_OPTIONS: IOption[] = [
+export const TYPE_OPTIONS: NameValueObj[] = [
   { name: 'Cardio', value: 'cardio' },
   { name: 'Olympic Weightlifting', value: 'olympic_weightlifting' },
   { name: 'Plyometrics', value: 'plyometrics' },
@@ -29,7 +29,7 @@ export const TYPE_OPTIONS: IOption[] = [
   { name: 'Stretching', value: 'stretching' },
   { name: 'Strongman', value: 'strongman' }
 ];
-export const MUSCLE_OPTIONS: IOption[] = [
+export const MUSCLE_OPTIONS: NameValueObj[] = [
   { name: 'Abdominals', value: 'abdominals' },
   { name: 'Abductors', value: 'abductors' },
   { name: 'Adductors', value: 'adductors' },
@@ -47,7 +47,7 @@ export const MUSCLE_OPTIONS: IOption[] = [
   { name: 'Traps', value: 'traps' },
   { name: 'Triceps', value: 'triceps' }
 ];
-export const DIFFICULTY_OPTIONS: IOption[] = [
+export const DIFFICULTY_OPTIONS: NameValueObj[] = [
   { name: 'Beginner', value: 'beginner' },
   { name: 'Intermediate', value: 'intermediate' },
   { name: 'Expert', value: 'expert' }
