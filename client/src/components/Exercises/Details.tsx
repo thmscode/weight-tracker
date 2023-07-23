@@ -11,7 +11,7 @@ type Props = {
 const Details: React.FC<Props> = ({ muscle, equipment, difficulty }) => {
   const exerciseDetails: NameValueObj[] = [
     { name: 'Targets:', value: muscle },
-    { name: 'Required Equipment:', value: equipment },
+    { name: 'Required Equipment:', value: equipment.split('_').join(' ') },
     { name: 'Difficulty:', value: difficulty },
   ];
 
