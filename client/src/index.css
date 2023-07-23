@@ -23,3 +23,10 @@ code {
   font-size: .9rem;
   color: red;
 }
+
+.exercise-form {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 1.25rem;
+}

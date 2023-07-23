@@ -20,35 +20,37 @@ export const CATEGORIES: NameValueObj[] = [
 ];
 
 // Workouts Page
-export const TYPE_OPTIONS: NameValueObj[] = [
-  { name: 'Cardio', value: 'cardio' },
-  { name: 'Olympic Weightlifting', value: 'olympic_weightlifting' },
-  { name: 'Plyometrics', value: 'plyometrics' },
-  { name: 'Powerlifting', value: 'powerlifting' },
-  { name: 'Strength', value: 'strength' },
-  { name: 'Stretching', value: 'stretching' },
-  { name: 'Strongman', value: 'strongman' }
+export const TYPES: string[] = [
+  'Cardio',
+  'Olympic Weightlifting',
+  'Plyometrics',
+  'Powerlifting',
+  'Strength',
+  'Stretching',
+  'Strongman',
 ];
-export const MUSCLE_OPTIONS: NameValueObj[] = [
-  { name: 'Abdominals', value: 'abdominals' },
-  { name: 'Abductors', value: 'abductors' },
-  { name: 'Adductors', value: 'adductors' },
-  { name: 'Biceps', value: 'biceps' },
-  { name: 'Calves', value: 'calves' },
-  { name: 'Chest', value: 'chest' },
-  { name: 'Forearms', value: 'forearms' },
-  { name: 'Glutes', value: 'glutes' },
-  { name: 'Hamstrings', value: 'hamstrings' },
-  { name: 'Lats', value: 'lats' },
-  { name: 'Lower Back', value: 'lower_back' },
-  { name: 'Middle Back', value: 'middle_back' },
-  { name: 'Neck', value: 'neck' },
-  { name: 'Quadriceps', value: 'quadriceps' },
-  { name: 'Traps', value: 'traps' },
-  { name: 'Triceps', value: 'triceps' }
+
+export const MUSCLES: string[] = [
+  'Abdominals',
+  'Abductors',
+  'Adductors',
+  'Biceps',
+  'Calves',
+  'Chest',
+  'Forearms',
+  'Glutes',
+  'Hamstrings',
+  'Lats',
+  'Lower Back',
+  'Middle Back',
+  'Neck',
+  'Quadriceps',
+  'Traps',
+  'Triceps'
 ];
-export const DIFFICULTY_OPTIONS: NameValueObj[] = [
-  { name: 'Beginner', value: 'beginner' },
-  { name: 'Intermediate', value: 'intermediate' },
-  { name: 'Expert', value: 'expert' }
+
+export const DIFFICULTIES: string[] = [
+  'Beginner',
+  'Intermediate',
+  'Expert'
 ];
