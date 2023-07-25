@@ -7,6 +7,7 @@ import { Exercise } from "../utils/types";
 import { Formik, Form } from "formik";
 import Dropdown from "../components/Exercises/Dropdown";
 import axios from 'axios';
+import PageHeader from "../components/PageHeader";
 
 const Exercises = () => {
   const [exerciseList, setExerciseList] = useState<Exercise[] | null>(null);
@@ -35,8 +36,8 @@ const Exercises = () => {
 
   return (
     <ContentContainer>
-      <Typography variant='h4'>Exercise Search</Typography>
-      <Box mt={2} mb={4} sx={{ display: 'flex' }}>
+      <PageHeader text='Exercise Search' />
+      <Box mb={4} sx={{ display: 'flex' }}>
         <Formik
           initialValues={{ type: '', muscle: '', difficulty: '' }}
           onSubmit={(values, actions) => {

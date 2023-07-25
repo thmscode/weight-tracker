@@ -1,6 +1,7 @@
 import ContentContainer from "../components/ContentContainer";
 import { Box, Link, Typography } from "@mui/material";
 import CalculatorTabs from "../components/BMI/CalculatorTabs";
+import PageHeader from "../components/PageHeader";
 
 // subcomponent used ONLY by the BMI page - placed in the same file to reduce overhead
 const SubHeader: React.FC<{ text: string }> = ({ text }) => {
@@ -18,7 +19,7 @@ const SubHeader: React.FC<{ text: string }> = ({ text }) => {
 const BMI = () => {
   return (
     <ContentContainer>
-      <Typography variant='h4' mb={3}>Body Mass Index (BMI)</Typography>
+      <PageHeader text='Body Mass Index (BMI)' />
       <Box mb={3}>
         <SubHeader text='What is BMI?' />
         <Typography paragraph={true}>
