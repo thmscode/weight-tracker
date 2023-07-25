@@ -6,7 +6,7 @@ type Props = {
 
 const ContentContainer: React.FC<Props> = ({ children }) => {
   return (
-    <Box py={4} px={36}>
+    <Box py={4} px={32}>
       {children}
     </Box>
   );
