@@ -18,7 +18,7 @@ const Calculator: React.FC<Props> = ({ value, index }) => {
   return (
     <Box hidden={value !== index}>
       {value === index && (
-        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Box display='flex' justifyContent='space-between'>
           {value === 0 ?
             <MetricCalculator handler={handleSubmission} /> :
             <ImperialCalculator handler={handleSubmission} />}

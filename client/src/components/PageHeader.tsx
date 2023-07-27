@@ -8,11 +8,9 @@ const PageHeader: React.FC<Props> = ({ text }) => {
   return (
     <Typography
       mb={3}
-      sx={{
-        textTransform: 'uppercase',
-        fontSize: '2rem',
-        letterSpacing: '0.125rem'
-      }}
+      fontSize='2rem'
+      textTransform='uppercase'
+      letterSpacing='0.125rem'
     >
       {text}
     </Typography>

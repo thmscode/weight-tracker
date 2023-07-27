@@ -19,12 +19,11 @@ const Card: React.FC<Props> = ({ exercise }) => {
       px={4}
       boxShadow={3}
     >
-      <Typography sx={{
-        textTransform: 'uppercase',
-        letterSpacing: '0.25rem',
-        fontSize: '1.5rem',
-        fontWeight: 600
-      }}
+      <Typography
+        textTransform='uppercase'
+        fontSize='1.5rem'
+        letterSpacing='0.25rem'
+        fontWeight={600}
       >
         {exercise.name}
       </Typography>
@@ -35,13 +34,21 @@ const Card: React.FC<Props> = ({ exercise }) => {
         difficulty={exercise.difficulty}
       />
       <>
-        <Typography sx={{ textTransform: 'uppercase', letterSpacing: '0.15rem', textDecoration: 'underline' }}>Instructions</Typography>
+        <Typography
+          textTransform='uppercase'
+          letterSpacing='0.15rem'
+          sx={{ textDecoration: 'underline' }}
+        >
+          Instructions
+        </Typography>
         <Typography>{exercise.instructions}</Typography>
       </>
       <Divider sx={{ mt: '0.5rem', mb: '1rem' }} />
       <>
         <Link
-          sx={{ textTransform: 'uppercase', letterSpacing: '0.15rem', textDecoration: 'underline' }}
+          textTransform='uppercase'
+          letterSpacing='0.15rem'
+          sx={{ textDecoration: 'underline' }}
           target="_blank"
           rel="noopener"
           href={`${BASE_YT_URL}${exercise.name.split(' ').join('+')}`}

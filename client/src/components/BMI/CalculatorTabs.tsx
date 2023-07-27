@@ -8,8 +8,8 @@ const CalculatorTabs = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: number): void => setValue(newValue);
 
   return (
-    <Box sx={{ width: '60%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box width='60%'>
+      <Box borderBottom={1} borderColor='divider'>
         <Tabs value={value} onChange={handleChange}>
           <Tab label="Metric" />
           <Tab label="Imperial" />

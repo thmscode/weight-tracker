@@ -9,8 +9,8 @@ const NavRoutes = () => {
         <Button
           key={index}
           href={route.value}
+          color='inherit'
           sx={{
-            color: 'inherit',
             fontSize: '1.125rem',
             letterSpacing: '0.1rem'
           }}

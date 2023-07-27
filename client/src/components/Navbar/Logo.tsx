@@ -6,16 +6,14 @@ const Logo = () => {
     <>
       <MonitorWeightIcon sx={{ mr: 0.5 }} />
       <Typography
+        color='inherit'
         variant='h5'
+        letterSpacing='0.2rem'
+        fontWeight={600}
+        mr={4}
         component='a'
         href='/'
-        sx={{
-          textDecoration: 'none',
-          color: 'inherit',
-          letterSpacing: '0.2rem',
-          fontWeight: 600,
-          mr: 4
-        }}
+        sx={{ textDecoration: 'none' }}
       >
         TRACKER
       </Typography>
