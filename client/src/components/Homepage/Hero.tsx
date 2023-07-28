@@ -19,8 +19,8 @@ const Hero = () => {
         <Typography
           fontSize='1.125rem'
           lineHeight='1.6rem'
-          mt='1.5rem'
-          mb='2.5rem'
+          mt='2rem'
+          mb='3rem'
         >
           Et repellat dignissimos, mollitia quidem illum quod sapiente eos qui nisi minima. Omnis sequi nobis facere voluptas ad fugiat explicabo sed alias!
           Tempora aperiam optio quo reiciendis error velit dolores ad.
@@ -34,7 +34,7 @@ const Hero = () => {
             px: '2rem'
           }}
         >
-          Join Now
+          Sign Up for Free
         </Button>
       </Box>
       <Box
