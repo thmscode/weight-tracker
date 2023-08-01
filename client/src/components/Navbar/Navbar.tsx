@@ -1,7 +1,7 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Logo from "./Logo";
-import Unauth from "./Unauth";
+import Auth from "./Auth";
 import NavRoutes from "./NavRoutes";
 
 const Navbar = () => {
@@ -10,7 +10,7 @@ const Navbar = () => {
       <Toolbar>
         <Logo />
         <NavRoutes />
-        <Unauth />
+        <Auth />
       </Toolbar>
     </AppBar>
   );
