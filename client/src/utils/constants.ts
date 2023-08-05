@@ -6,16 +6,6 @@ export const NAV_ROUTES: NameValueObj[] = [
   { name: 'EXERCISES', value: '/exercises' }
 ];
 
-export const UNAUTH_ROUTES: NameValueObj[] = [
-  { name: 'LOGIN', value: '/login' },
-  { name: 'SIGNUP', value: '/signup' }
-];
-
-export const AUTH_ROUTES: NameValueObj[] = [
-  { name: 'DASHBOARD', value: '/dashboard' },
-  { name: 'LOGOUT', value: '/logout' }
-];
-
 // BMI Page - BMIChart.tsx
 export const HEADERS: string[] = ['Classification', 'BMI'];
 
