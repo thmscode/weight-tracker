@@ -1,15 +1,13 @@
 import Button from '@mui/material/Button';
 
 type Props = {
-  key: string | number;
   href: string;
   label: string;
-}
+};
 
-const NavButton: React.FC<Props> = ({ key, href, label }) => {
+const NavButton: React.FC<Props> = ({ href, label }) => {
   return (
     <Button
-      key={key}
       href={href}
       color='inherit'
       sx={{

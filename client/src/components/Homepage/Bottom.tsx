@@ -44,7 +44,7 @@ const Bottom = () => {
       mb='4rem'
       gap='3rem'
     >
-      {HOMEPAGE_BLURBS.map(blurb => <Blurb header={blurb.name} text={blurb.value} />)}
+      {HOMEPAGE_BLURBS.map((blurb, index) => <Blurb key={index} header={blurb.name} text={blurb.value} />)}
       <Button
         size='large'
         variant='contained'
