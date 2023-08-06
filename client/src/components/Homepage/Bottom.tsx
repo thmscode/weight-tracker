@@ -49,7 +49,7 @@ const Bottom = () => {
         size='large'
         variant='contained'
         sx={{ py: '1.25rem', px: '3rem' }}
-        onClick={() => loginWithRedirect()}
+        onClick={() => loginWithRedirect({ authorizationParams: { screen_hint: 'signup' } })}
       >
         Start Tracking Today!
       </Button>
