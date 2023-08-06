@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useAuth0 } from "@auth0/auth0-react";
 import Root from './layouts/Root';
+import LoadingSpinner from './components/LoadingSpinner';
 import ErrorPage from './pages/ErrorPage';
 import Homepage from './pages/Homepage';
 import BMI from './pages/BMI';
 import Exercises from './pages/Exercises';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -16,13 +16,15 @@ const router = createBrowserRouter([
       { path: "/", element: <Homepage /> },
       { path: "/bmi", element: <BMI /> },
       { path: "/exercises", element: <Exercises /> },
-      { path: "/login", element: <Login /> },
-      { path: "/signup", element: <Signup /> },
     ]
   },
 ]);
 
 const App = () => {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) return <LoadingSpinner />
+
   return (
     <RouterProvider router={router} />
   );
