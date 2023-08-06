@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import { HOMEPAGE_BLURBS } from '../../utils/constants';
+import { useAuth0 } from '@auth0/auth0-react';
 
 type Props = {
   header: string;
@@ -33,6 +34,8 @@ const Blurb: React.FC<Props> = ({ header, text }) => {
 }
 
 const Bottom = () => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <Box
       display='flex'
@@ -45,8 +48,8 @@ const Bottom = () => {
       <Button
         size='large'
         variant='contained'
-        href='/signup'
         sx={{ py: '1.25rem', px: '3rem' }}
+        onClick={() => loginWithRedirect()}
       >
         Start Tracking Today!
       </Button>

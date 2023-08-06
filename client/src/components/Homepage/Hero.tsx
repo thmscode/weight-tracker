@@ -1,6 +1,9 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Button, Typography } from '@mui/material';
 
 const Hero = () => {
+  const { loginWithRedirect } = useAuth0();
+
   return (
     <Box
       mt='3rem'
@@ -28,11 +31,8 @@ const Hero = () => {
         <Button
           variant='contained'
           size='large'
-          href='/signup'
-          sx={{
-            py: '1.125rem',
-            px: '2rem'
-          }}
+          sx={{ py: '1.125rem', px: '2rem' }}
+          onClick={() => loginWithRedirect()}
         >
           Sign Up for Free
         </Button>
