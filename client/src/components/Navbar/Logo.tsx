@@ -1,9 +1,10 @@
 import Typography from '@mui/material/Typography';
 import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
+import { Box } from '@mui/material';
 
 const Logo = () => {
   return (
-    <>
+    <Box display='flex' alignItems='center'>
       <MonitorWeightIcon sx={{ mr: 0.5 }} />
       <Typography
         color='inherit'
@@ -17,7 +18,7 @@ const Logo = () => {
       >
         TRACKER
       </Typography>
-    </>
+    </Box>
   );
 }
 

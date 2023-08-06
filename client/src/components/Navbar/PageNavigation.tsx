@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import { NAV_ROUTES } from '../../utils/constants';
 import NavButton from './NavButton';
 
-const NavRoutes = () => {
+const PageNavigation = () => {
   return (
     <Stack direction='row' spacing={3} sx={{ flexGrow: 1 }}>
       {NAV_ROUTES.map((route, index) => (
@@ -16,4 +16,4 @@ const NavRoutes = () => {
   );
 }
 
-export default NavRoutes;
+export default PageNavigation;

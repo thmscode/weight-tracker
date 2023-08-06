@@ -34,10 +34,10 @@ const AuthorizedActions = () => {
   );
 }
 
-const Actions = () => {
+const UserTools = () => {
   const { isAuthenticated } = useAuth0();
 
   return isAuthenticated ? <AuthorizedActions /> : <UnauthorizedActions />
 }
 
-export default Actions;
+export default UserTools;

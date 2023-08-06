@@ -1,8 +1,8 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Logo from "./Logo";
-import Actions from "./Actions";
-import NavRoutes from "./NavRoutes";
+import UserTools from "./UserTools";
+import PageNavigation from "./PageNavigation";
 
 const Navbar = () => {
   return (
@@ -15,8 +15,8 @@ const Navbar = () => {
     >
       <Toolbar>
         <Logo />
-        <NavRoutes />
-        <Actions />
+        <PageNavigation />
+        <UserTools />
       </Toolbar>
     </AppBar>
   );
