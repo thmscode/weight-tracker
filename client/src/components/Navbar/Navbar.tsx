@@ -6,7 +6,13 @@ import NavRoutes from "./NavRoutes";
 
 const Navbar = () => {
   return (
-    <AppBar position='static' sx={{ py: 1, px: 24 }}>
+    <AppBar
+      position='static'
+      sx={{
+        py: 1,
+        px: 24
+      }}
+    >
       <Toolbar>
         <Logo />
         <NavRoutes />

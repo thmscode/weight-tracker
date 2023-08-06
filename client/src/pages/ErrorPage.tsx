@@ -7,7 +7,14 @@ const ErrorPage = () => {
     <>
       <Navbar />
       <ContentContainer>
-        <Box sx={{ mt: '1rem', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <Box
+          sx={{
+            mt: '1rem',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '2rem'
+          }}
+        >
           <Typography variant='h4' sx={{ fontWeight: 600 }}>
             Oops, looks like something went wrong!
           </Typography>

@@ -39,7 +39,11 @@ const Exercises = () => {
       <PageHeader text='Exercise Search' />
       <Box mb={4} sx={{ display: 'flex' }}>
         <Formik
-          initialValues={{ type: '', muscle: '', difficulty: '' }}
+          initialValues={{
+            type: '',
+            muscle: '',
+            difficulty: ''
+          }}
           onSubmit={(values, actions) => {
             const url = constructURL(
               formatInputValue(values.type),
@@ -58,7 +62,14 @@ const Exercises = () => {
           </Form>
         </Formik>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1.75rem', justifyContent: 'center' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1.75rem',
+          justifyContent: 'center'
+        }}
+      >
         {exerciseList ?
           exerciseList.length > 0 ?
             exerciseList.map((exercise, index) => <Card key={index} exercise={exercise} />) :

@@ -1,4 +1,3 @@
-import { LogoutOptions, RedirectLoginOptions } from '@auth0/auth0-react';
 import Button from '@mui/material/Button';
 
 type Props = {

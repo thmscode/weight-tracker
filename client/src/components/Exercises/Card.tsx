@@ -48,7 +48,6 @@ const Card: React.FC<Props> = ({ exercise }) => {
         <Link
           textTransform='uppercase'
           letterSpacing='0.15rem'
-          sx={{ textDecoration: 'underline' }}
           target="_blank"
           rel="noopener"
           href={`${BASE_YT_URL}${exercise.name.split(' ').join('+')}`}
