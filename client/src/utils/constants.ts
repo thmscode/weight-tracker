@@ -2,8 +2,8 @@ import { NameValueObj } from "./types";
 
 // Navbar
 export const NAV_ROUTES: NameValueObj[] = [
-  { name: 'BMI', value: '/bmi' },
-  { name: 'EXERCISES', value: '/exercises' }
+  { name: 'bmi', value: '/bmi' },
+  { name: 'exercises', value: '/exercises' }
 ];
 
 // BMI Page - BMIChart.tsx
