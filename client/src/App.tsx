@@ -6,6 +6,8 @@ import ErrorPage from './pages/ErrorPage';
 import Homepage from './pages/Homepage';
 import BMI from './pages/BMI';
 import Exercises from './pages/Exercises';
+import AuthenticationGuard from './components/AuthenticationGuard';
+import Dashboard from './pages/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,7 @@ const router = createBrowserRouter([
       { path: "/", element: <Homepage /> },
       { path: "/bmi", element: <BMI /> },
       { path: "/exercises", element: <Exercises /> },
+      { path: "/dashboard", element: <AuthenticationGuard component={Dashboard} /> },
     ]
   },
 ]);

@@ -34,7 +34,7 @@ const Hero = () => {
           sx={{ py: '1.125rem', px: '2rem' }}
           onClick={() => loginWithRedirect({ authorizationParams: { screen_hint: 'signup' } })}
         >
-          Sign Up for Free
+          Get Started for Free
         </Button>
       </Box>
       <Box

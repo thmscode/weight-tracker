@@ -14,8 +14,8 @@ const UnauthorizedActions = () => {
         fn={() => loginWithRedirect()}
       />
       <AuthButton
-        key='sign up'
-        label='sign up'
+        key='sign-up'
+        label='sign-up'
         fn={() => loginWithRedirect({ authorizationParams: { screen_hint: 'signup' } })}
       />
     </Stack>
