@@ -7,18 +7,11 @@ const UnauthorizedActions = () => {
   const { loginWithRedirect } = useAuth0();
 
   return (
-    <Stack direction='row' spacing={3}>
-      <AuthButton
-        key='login'
-        label='login'
-        fn={() => loginWithRedirect()}
-      />
-      <AuthButton
-        key='sign-up'
-        label='sign-up'
-        fn={() => loginWithRedirect({ authorizationParams: { screen_hint: 'signup' } })}
-      />
-    </Stack>
+    <AuthButton
+      key='login'
+      label='login'
+      fn={() => loginWithRedirect()}
+    />
   );
 }
 
