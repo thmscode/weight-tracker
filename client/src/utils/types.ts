@@ -23,3 +23,21 @@ export type Exercise = {
   difficulty: string;
   instructions: string;
 };
+
+// Dashboard Page
+export type WeightEntry = {
+  date: Date;
+  weight: number;
+};
+
+export type UserObj = {
+  first_name: string;
+  last_name: string;
+  full_name: string;
+  email: string;
+  id: string;
+  weight: null | number;
+  height: null | number;
+  bmi: null | number;
+  weight_entries: WeightEntry[];
+};
