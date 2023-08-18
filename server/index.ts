@@ -4,16 +4,22 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import userRouter from './routes/user';
+import { validateAccessToken } from './middleware/auth0_middleware';
 
-// configurations
+// reading environment variables & using them to initialize variables
 dotenv.config();
 const app: Express = express();
+const PORT = process.env.PORT ?? 3001;
+const MONGO_URL = process.env.MONGO_URL ?? '';
+
+// middleware
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan("common"));
-const PORT = process.env.PORT ?? 3001;
-const MONGO_URL = process.env.MONGO_URL ?? '';
+app.use(validateAccessToken);
+app.use('/api/user/dashboard', userRouter);
 
 // connecting to mongodb atlas & starting up the server
 mongoose.connect(MONGO_URL)
