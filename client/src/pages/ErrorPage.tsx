@@ -1,5 +1,5 @@
 import ContentContainer from "../components/ContentContainer";
-import Navbar from "../components/Navbar/Navbar";
+import Navbar from "../components/navbar/Navbar";
 import { Box, Link, Typography } from "@mui/material";
 
 const ErrorPage = () => {

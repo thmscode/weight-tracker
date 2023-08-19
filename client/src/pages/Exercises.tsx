@@ -2,10 +2,10 @@ import ContentContainer from "../components/ContentContainer";
 import { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { TYPES, MUSCLES, DIFFICULTIES } from "../utils/constants";
-import Card from "../components/Exercises/Card";
+import Card from "../components/exercises/Card";
 import { Exercise } from "../utils/types";
 import { Formik, Form } from "formik";
-import Dropdown from "../components/Exercises/Dropdown";
+import Dropdown from "../components/exercises/Dropdown";
 import axios from 'axios';
 import PageHeader from "../components/PageHeader";
 

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Box } from '@mui/material';
 import UserBMI from './UserBMI';
 import Chart from './Chart';
-import MetricCalculator from '../Forms/MetricCalculator';
-import ImperialCalculator from '../Forms/ImperialCalculator';
+import MetricCalculator from '../forms/MetricCalculator';
+import ImperialCalculator from '../forms/ImperialCalculator';
 
 type Props = {
   value: number;

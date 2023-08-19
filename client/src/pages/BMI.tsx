@@ -1,6 +1,6 @@
 import ContentContainer from "../components/ContentContainer";
 import { Box, Link, Typography } from "@mui/material";
-import CalculatorTabs from "../components/BMI/CalculatorTabs";
+import CalculatorTabs from "../components/bmi/CalculatorTabs";
 import PageHeader from "../components/PageHeader";
 
 // subcomponent used ONLY by the BMI page - placed in the same file to reduce overhead
