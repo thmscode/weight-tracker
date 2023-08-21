@@ -29,7 +29,7 @@ const userSchema = new Schema({
   bmi: Number,
   weight_entries: [
     {
-      date: { type: Date, required: true, unique: true },
+      date: { type: Date, required: true, unique: true, sparse: true },
       weight: { type: Number, required: true }
     }
   ]
