@@ -1,9 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { Box, Button, Divider } from "@mui/material";
+import { Box, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
 import { UserObj } from "../../utils/types";
 import axios from "axios";
-import UserInfoColumn from './UserInfoColumn';
+import UserInfo from './UserInfo';
 
 type Props = {
   value: number;
@@ -34,34 +34,22 @@ const HomeTab: React.FC<Props> = ({ value, index }) => {
     };
 
     getData();
-  }, [user, getAccessTokenSilently])
+  }, [user, getAccessTokenSilently]);
 
   return (
     <Box hidden={value !== index}>
       {value === index && userData && (
         <Box display='flex' flexDirection='column'>
+          <UserInfo userData={userData} />
+          <Divider />
           <Box
             display='flex'
             justifyContent='space-between'
-            px='6rem'
+            px='3rem'
             my='2rem'
           >
-            <UserInfoColumn
-              data={[
-                { label: 'Name', info: userData.full_name },
-                { label: 'Email', info: userData.email }
-              ]}
-            />
-            <UserInfoColumn
-              data={[
-                { label: 'Height (in)', info: userData.height },
-                { label: 'Weight (lbs)', info: userData.weight }
-              ]}
-            />
-            <UserInfoColumn data={[{ label: 'BMI', info: userData.bmi }]} />
-            <Box>
-              <Button variant='contained'>Edit</Button>
-            </Box>
+            <Box>Graph</Box>
+            <Box>Recent Entries</Box>
           </Box>
         </Box>
       )}
