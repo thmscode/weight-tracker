@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
-import { UserObj } from "../../utils/types";
+import { UserObj } from "../../../utils/types";
 import axios from "axios";
 import UserInfo from './UserInfo';
 
@@ -48,8 +48,9 @@ const HomeTab: React.FC<Props> = ({ value, index }) => {
             px='3rem'
             my='2rem'
           >
-            <Box>Graph</Box>
-            <Box>Recent Entries</Box>
+            <Box flexGrow={1} bgcolor='red'>Graph</Box>
+            <Divider orientation='vertical' />
+            <Box flexGrow={0.3} bgcolor='blue'>Recent Entries</Box>
           </Box>
         </Box>
       )}

@@ -1,6 +1,6 @@
 import { Box, Button } from '@mui/material';
 import UserInfoColumn from './UserInfoColumn';
-import { UserObj } from '../../utils/types';
+import { UserObj } from '../../../utils/types';
 
 const UserInfo: React.FC<{ userData: UserObj }> = ({ userData }) => {
   return (
