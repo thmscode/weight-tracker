@@ -1,17 +1,12 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
-import { UserObj } from "../../../utils/types";
+import { TabProps, UserObj } from "../../../utils/types";
 import axios from "axios";
-import UserInfo from './UserInfo';
-import Entries from './Entries';
+import Info from './Info';
+import Data from './Data';
 
-type Props = {
-  value: number;
-  index: number;
-};
-
-const HomeTab: React.FC<Props> = ({ value, index }) => {
+const HomeTab: React.FC<TabProps> = ({ value, index }) => {
   const { user, getAccessTokenSilently } = useAuth0();
   const [userData, setUserData] = useState<UserObj | null>(null);
 
@@ -41,9 +36,9 @@ const HomeTab: React.FC<Props> = ({ value, index }) => {
     <Box hidden={value !== index}>
       {value === index && userData && (
         <Box display='flex' flexDirection='column'>
-          <UserInfo userData={userData} />
+          <Info userData={userData} />
           <Divider />
-          <Entries weightEntries={userData.weight_entries} />
+          <Data weightEntries={userData.weight_entries} />
         </Box>
       )}
     </Box>
