@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Box } from '@mui/material';
 import UserBMI from './UserBMI';
-import Chart from './Chart';
+import BMIChart from './BMIChart';
 import MetricCalculator from '../forms/MetricCalculator';
 import ImperialCalculator from '../forms/ImperialCalculator';
 
@@ -23,7 +23,7 @@ const Calculator: React.FC<Props> = ({ value, index }) => {
             <MetricCalculator handler={handleSubmission} /> :
             <ImperialCalculator handler={handleSubmission} />}
           <UserBMI bmi={bmi} />
-          <Chart />
+          <BMIChart />
         </Box>
       )}
     </Box>
