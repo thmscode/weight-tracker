@@ -6,6 +6,9 @@ import { FormattedEntry } from '../../../utils/types';
 Chart.register(...registerables);
 
 const LineChart: React.FC<{ data: FormattedEntry[] }> = ({ data }) => {
+  const getMin = (data: FormattedEntry[]) => parseInt(data.reduce((prev, curr) => prev.weight < curr.weight ? prev : curr).weight);
+  const getMax = (data: FormattedEntry[]) => parseInt(data.reduce((prev, curr) => prev.weight > curr.weight ? prev : curr).weight);
+
   return (
     <Box minWidth='80%'>
       <Typography variant='h6'>Weight Over Time</Typography>
@@ -21,8 +24,8 @@ const LineChart: React.FC<{ data: FormattedEntry[] }> = ({ data }) => {
         options={{
           scales: {
             y: {
-              min: parseInt((data.reduce((prev, curr) => prev.weight < curr.weight ? prev : curr)).weight) - 3,
-              max: parseInt((data.reduce((prev, curr) => prev.weight > curr.weight ? prev : curr)).weight) + 3
+              min: (data.length > 0 ? getMin(data) - 3 : 0),
+              max: (data.length > 0 ? getMax(data) + 3 : 10)
             }
           }
         }}

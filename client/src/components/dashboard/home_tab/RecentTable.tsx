@@ -22,14 +22,16 @@ const RecentTable: React.FC<{ data: FormattedEntry[] }> = ({ data }) => {
               <TableCell>Weight (lbs)</TableCell>
             </TableRow>
           </TableHead>
-          {data && <TableBody>
-            {data.map((entry, index) => (
-              <TableRow key={index}>
-                <TableCell align='left'>{entry.date}</TableCell>
-                <TableCell align='right'>{entry.weight}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>}
+          <TableBody>
+            {data.length > 0 ?
+              data.map((entry, index) => (
+                <TableRow key={index}>
+                  <TableCell align='left'>{entry.date}</TableCell>
+                  <TableCell align='right'>{entry.weight}</TableCell>
+                </TableRow>
+              )) :
+              <Typography mt='0.5rem'>No data yet!</Typography>}
+          </TableBody>
         </Table>
       </TableContainer>
     </Box>
