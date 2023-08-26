@@ -25,7 +25,7 @@ export type Exercise = {
 };
 
 // Dashboard Page
-export type WeightEntry = {
+export type Entry = {
   date: Date;
   weight: number;
 };
@@ -39,5 +39,15 @@ export type UserObj = {
   weight: null | number;
   height: null | number;
   bmi: null | number;
-  weight_entries: WeightEntry[];
+  weight_entries: Entry[];
+};
+
+export type TabProps = {
+  value: number;
+  index: number;
+};
+
+export type FormattedEntry = {
+  date: string,
+  weight: string
 };
