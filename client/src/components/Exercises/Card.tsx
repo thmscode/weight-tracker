@@ -5,11 +5,7 @@ import Link from '@mui/material/Link';
 import { Exercise } from '../../utils/types';
 import Details from './Details';
 
-type Props = {
-  exercise: Exercise;
-};
-
-const Card: React.FC<Props> = ({ exercise }) => {
+const Card: React.FC<{ exercise: Exercise }> = ({ exercise }) => {
   const BASE_YT_URL: string = 'https://www.youtube.com/results?search_query=';
 
   return (

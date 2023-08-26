@@ -6,11 +6,7 @@ interface DataObj {
   info: string | number | null;
 };
 
-type Props = {
-  data: DataObj[];
-};
-
-const UserInfoColumn: React.FC<Props> = ({ data }) => {
+const UserInfoColumn: React.FC<{ data: DataObj[] }> = ({ data }) => {
   return (
     <Box
       display='flex'

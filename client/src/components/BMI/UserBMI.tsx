@@ -1,10 +1,6 @@
 import { Box, Typography } from '@mui/material';
 
-type Props = {
-  bmi: number | null;
-};
-
-const UserBMI: React.FC<Props> = ({ bmi }) => {
+const UserBMI: React.FC<{ bmi: number | null }> = ({ bmi }) => {
   return (
     <Box
       alignSelf='center'

@@ -1,10 +1,6 @@
 import Typography from '@mui/material/Typography';
 
-type Props = {
-  text: string;
-};
-
-const PageHeader: React.FC<Props> = ({ text }) => {
+const PageHeader: React.FC<{ text: string }> = ({ text }) => {
   return (
     <Typography
       mb={3}
