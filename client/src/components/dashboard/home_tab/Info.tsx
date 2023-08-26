@@ -2,7 +2,7 @@ import { Box, Button } from '@mui/material';
 import UserInfoColumn from './UserInfoColumn';
 import { UserObj } from '../../../utils/types';
 
-const UserInfo: React.FC<{ userData: UserObj }> = ({ userData }) => {
+const Info: React.FC<{ userData: UserObj }> = ({ userData }) => {
   return (
     <Box
       display='flex'
@@ -30,4 +30,4 @@ const UserInfo: React.FC<{ userData: UserObj }> = ({ userData }) => {
   );
 }
 
-export default UserInfo;
+export default Info;
