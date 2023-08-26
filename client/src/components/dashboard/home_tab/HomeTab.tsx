@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { UserObj } from "../../../utils/types";
 import axios from "axios";
 import UserInfo from './UserInfo';
+import Entries from './Entries';
 
 type Props = {
   value: number;
@@ -42,16 +43,7 @@ const HomeTab: React.FC<Props> = ({ value, index }) => {
         <Box display='flex' flexDirection='column'>
           <UserInfo userData={userData} />
           <Divider />
-          <Box
-            display='flex'
-            justifyContent='space-between'
-            px='3rem'
-            my='2rem'
-          >
-            <Box flexGrow={1} bgcolor='red'>Graph</Box>
-            <Divider orientation='vertical' />
-            <Box flexGrow={0.3} bgcolor='blue'>Recent Entries</Box>
-          </Box>
+          <Entries weightEntries={userData.weight_entries} />
         </Box>
       )}
     </Box>
