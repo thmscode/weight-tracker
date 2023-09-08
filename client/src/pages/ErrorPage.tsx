@@ -8,12 +8,10 @@ const ErrorPage = () => {
       <Navbar />
       <ContentContainer>
         <Box
-          sx={{
-            mt: '1rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '2rem'
-          }}
+          display='flex'
+          flexDirection='column'
+          gap='2rem'
+          mt='1rem'
         >
           <Typography variant='h4' sx={{ fontWeight: 600 }}>
             Oops, looks like something went wrong!
