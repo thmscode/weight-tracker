@@ -1,0 +1,105 @@
+import {
+  Box,
+  Button,
+  Dialog,
+  TextField,
+  Typography
+} from "@mui/material";
+import { Field, Form, Formik } from "formik";
+import { USER_DATA_FORM_VALIDATION } from "../../utils/yup-schemas";
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from "axios";
+
+type Props = {
+  open: boolean;
+  handleClose: () => void;
+  data: { height: number | null, weight: number | null };
+};
+
+const EditUser: React.FC<Props> = ({ open, handleClose, data }) => {
+  const { user, getAccessTokenSilently } = useAuth0();
+
+  const handleSubmit = async (height: number, weight: number) => {
+    try {
+      const token = await getAccessTokenSilently();
+      const response = await axios.post(
+        '/api/user/dashboard/updateUserData',
+        { height, weight },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          params: { email: user!.email, id: user!.sub }
+        }
+      );
+      console.log(response);
+      const { error, data } = response.data;
+      if (!error) {
+        console.log(data);
+        setTimeout(function () { window.location.reload() }, 1000);
+      }
+      else throw Error();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  return (
+    <Dialog open={open} onClose={handleClose}>
+      <Box p='2rem'>
+        <Typography variant='h5' pb='0.75rem'>Edit Personal Information</Typography>
+        <Formik
+          initialValues={{
+            height: (data.height ? data.height : 0),
+            weight: (data.weight ? data.weight : 0)
+          }}
+          validationSchema={USER_DATA_FORM_VALIDATION}
+          onSubmit={(values) => {
+            if (values.height !== data.height || values.weight !== data.weight) {
+              handleSubmit(values.height, values.weight);
+            }
+          }}
+        >{({ errors, touched }) => (
+          <Form className='edit-user-form'>
+            <Box>
+              <Field
+                label='Height (in)'
+                id='height'
+                name='height'
+                as={TextField}
+                variant='standard'
+              />
+              {errors.height && touched.height ? (
+                <div className="error-message">
+                  {errors.height}
+                </div>
+              ) : null}
+            </Box>
+            <Box>
+              <Field
+                label='Weight (lbs)'
+                id='weight'
+                name='weight'
+                as={TextField}
+                variant='standard'
+              />
+              {errors.weight && touched.weight ? (
+                <div className="error-message">
+                  {errors.weight}
+                </div>
+              ) : null}
+            </Box>
+            <Button
+              type='submit'
+              variant='contained'
+              onClick={handleClose}
+            >
+              Submit
+            </Button>
+          </Form>
+        )}
+        </Formik>
+      </Box>
+    </Dialog>
+  );
+}
+
+export default EditUser;
