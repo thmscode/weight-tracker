@@ -30,11 +30,10 @@ const EditUser: React.FC<Props> = ({ open, handleClose, data }) => {
           params: { email: user!.email, id: user!.sub }
         }
       );
-      console.log(response);
       const { error, data } = response.data;
       if (!error) {
         console.log(data);
-        setTimeout(function () { window.location.reload() }, 1000);
+        window.location.reload();
       }
       else throw Error();
     } catch (e) {
