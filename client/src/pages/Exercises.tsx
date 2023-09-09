@@ -63,12 +63,9 @@ const Exercises = () => {
         </Formik>
       </Box>
       <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1.75rem',
-          justifyContent: 'center'
-        }}
+        display='flex'
+        flexDirection='column'
+        gap='1.75rem'
       >
         {exerciseList ?
           exerciseList.length > 0 ?
