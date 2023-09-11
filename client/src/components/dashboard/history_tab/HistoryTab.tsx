@@ -21,7 +21,7 @@ const HistoryTab: React.FC<TabProps> = ({ value, index }) => {
           }
         )
         const { error, data } = response.data;
-        if (!error) setData(data);
+        if (!error) setData(data.reverse());
         else throw Error();
       } catch (e) {
         console.log(e);
