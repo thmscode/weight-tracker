@@ -1,10 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/user";
-
-const calculateBMI = (h: number, w: number): number => {
-  const BMI = (w / Math.pow(h, 2)) * 703;
-  return Math.round(BMI * 10) / 10;
-};
+import { calculateBMI, formatEntries } from "../utils";
 
 export const getUserData = async (req: Request, res: Response) => {
   const { email, id } = req.query;
@@ -30,5 +26,21 @@ export const updateUserData = async (req: Request, res: Response) => {
   } catch (e) {
     console.log(e);
     res.status(500).json({ error: 'Internal server error.', msg: 'Internal server error.' });
+  }
+};
+
+export const getEntries = async (req: Request, res: Response) => {
+  const { email, id } = req.query;
+
+  try {
+    const user = await User.findOne({ email, id });
+    if (user) {
+      const data = formatEntries(user.weight_entries);
+      res.status(200).json({ error: null, data });
+    }
+    else res.status(501).json({ error: 'User could not be found.', data: null });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: 'Internal server error.', data: null });
   }
 };
