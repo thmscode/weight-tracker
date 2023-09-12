@@ -4,6 +4,7 @@ import { useState } from "react";
 import ContentContainer from "../components/ContentContainer";
 import { Box, Tab, Tabs } from '@mui/material';
 import HomeTab from '../components/dashboard/home_tab/HomeTab';
+import HistoryTab from "../components/dashboard/history_tab/HistoryTab";
 
 const Dashboard = () => {
   const [value, setValue] = useState<number>(0);
@@ -19,10 +20,10 @@ const Dashboard = () => {
             <Tabs value={value} onChange={handleChange}>
               <Tab label='Home' id='tab-1' />
               <Tab label='History' id='tab-2' />
-              <Tab label='Workouts' id='tab-3' />
             </Tabs>
           </Box>
           <HomeTab value={value} index={0} />
+          <HistoryTab value={value} index={1} />
         </ContentContainer>
       )
     )
