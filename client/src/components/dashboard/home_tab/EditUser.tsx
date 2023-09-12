@@ -6,7 +6,7 @@ import {
   Typography
 } from "@mui/material";
 import { Field, Form, Formik } from "formik";
-import { USER_DATA_FORM_VALIDATION } from "../../utils/yup-schemas";
+import { USER_DATA_FORM_VALIDATION } from "../../../utils/yup-schemas";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 

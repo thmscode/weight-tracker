@@ -2,7 +2,7 @@ import { Box, Button } from '@mui/material';
 import UserInfoColumn from './UserInfoColumn';
 import { UserObj } from '../../../utils/types';
 import { useState } from 'react';
-import EditUser from '../../forms/EditUser';
+import EditUser from './EditUser';
 
 const Info: React.FC<{ userData: UserObj }> = ({ userData }) => {
   const [open, setOpen] = useState<boolean>(false);
