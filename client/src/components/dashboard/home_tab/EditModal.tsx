@@ -16,7 +16,7 @@ type Props = {
   data: { height: number | null, weight: number | null };
 };
 
-const EditUser: React.FC<Props> = ({ open, handleClose, data }) => {
+const EditModal: React.FC<Props> = ({ open, handleClose, data }) => {
   const { user, getAccessTokenSilently } = useAuth0();
 
   const handleSubmit = async (height: number, weight: number) => {
@@ -101,4 +101,4 @@ const EditUser: React.FC<Props> = ({ open, handleClose, data }) => {
   );
 }
 
-export default EditUser;
+export default EditModal;

@@ -2,7 +2,7 @@ import { Box, Button } from '@mui/material';
 import UserInfoColumn from './UserInfoColumn';
 import { UserObj } from '../../../utils/types';
 import { useState } from 'react';
-import EditUser from './EditUser';
+import EditModal from './EditModal';
 
 const Info: React.FC<{ userData: UserObj }> = ({ userData }) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -36,7 +36,7 @@ const Info: React.FC<{ userData: UserObj }> = ({ userData }) => {
           <Button variant='contained' onClick={handleOpen}>Edit</Button>
         </Box>
       </Box>
-      <EditUser
+      <EditModal
         open={open}
         handleClose={handleClose}
         data={{ height: userData.height, weight: userData.weight }}
