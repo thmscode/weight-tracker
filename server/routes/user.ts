@@ -3,6 +3,7 @@ import {
   deleteEntry,
   getUserData,
   getEntries,
+  saveNewEntry,
   updateUserData,
 } from "../controllers/user";
 
@@ -12,5 +13,6 @@ router.get('/', getUserData);
 router.post('/updateUserData', updateUserData);
 router.get('/getEntries', getEntries);
 router.delete('/deleteEntry', deleteEntry);
+router.post('/newEntry', saveNewEntry);
 
 export default router;

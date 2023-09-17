@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import RecentTable from './RecentTable';
 import LineChart from './LineChart';
 import { Entry, FormattedEntry } from '../../../utils/types';
+import NewEntryModal from './NewEntryModal';
 
 const formatEntries = (entries: Entry[]): FormattedEntry[] => {
   const format = entries.map(entry => {
@@ -30,6 +31,11 @@ const getRecentEntries = (entries: Entry[]): FormattedEntry[] => {
 const Data: React.FC<{ weightEntries: Entry[] }> = ({ weightEntries }) => {
   const [chartData, setChartData] = useState<FormattedEntry[] | null>(null);
   const [recentData, setRecentData] = useState<FormattedEntry[] | null>(null);
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleOpen = (): void => setOpen(true);
+
+  const handleClose = (): void => setOpen(false);
 
   useEffect(() => {
     setRecentData(getRecentEntries(weightEntries));
@@ -44,7 +50,11 @@ const Data: React.FC<{ weightEntries: Entry[] }> = ({ weightEntries }) => {
       my='2rem'
     >
       {chartData && <LineChart data={chartData} />}
-      {recentData && <RecentTable data={recentData} />}
+      {recentData && <RecentTable data={recentData} handleOpen={handleOpen} />}
+      <NewEntryModal
+        open={open}
+        handleClose={handleClose}
+      />
     </Box>
   );
 }

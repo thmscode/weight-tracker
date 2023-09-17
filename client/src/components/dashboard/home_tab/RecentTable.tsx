@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -10,9 +11,14 @@ import {
 } from '@mui/material';
 import { FormattedEntry } from '../../../utils/types';
 
-const RecentTable: React.FC<{ data: FormattedEntry[] }> = ({ data }) => {
+type Props = {
+  data: FormattedEntry[];
+  handleOpen: () => void;
+}
+
+const RecentTable: React.FC<Props> = ({ data, handleOpen }) => {
   return (
-    <Box>
+    <Box display='flex' flexDirection='column'>
       <Typography variant='h6'>Recent Entries</Typography>
       <TableContainer>
         <Table>
@@ -34,6 +40,13 @@ const RecentTable: React.FC<{ data: FormattedEntry[] }> = ({ data }) => {
           </TableBody>
         </Table>
       </TableContainer>
+      <Button
+        variant='contained'
+        sx={{ alignSelf: 'end', mt: '1rem' }}
+        onClick={handleOpen}
+      >
+        Add New Entry
+      </Button>
     </Box>
   );
 }
