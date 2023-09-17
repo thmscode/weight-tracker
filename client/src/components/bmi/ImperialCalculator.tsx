@@ -1,7 +1,7 @@
 import { BMIFormValues, BMIFormProps } from '../../utils/types';
 import { Box, Button, TextField } from '@mui/material';
 import { Formik, Field, Form, FormikHelpers } from 'formik';
-import { BMI_FORM_VALIDATION } from '../../utils/yup-schemas';
+import { BMI_VALIDATION } from '../../utils/yup-schemas';
 
 const ImperialCalculator: React.FC<BMIFormProps> = ({ handler }) => {
   const calculateBMI_IMP = (height: number, weight: number): number => {
@@ -12,7 +12,7 @@ const ImperialCalculator: React.FC<BMIFormProps> = ({ handler }) => {
   return (
     <Formik
       initialValues={{ height: 0, weight: 0 }}
-      validationSchema={BMI_FORM_VALIDATION}
+      validationSchema={BMI_VALIDATION}
       onSubmit={(
         values: BMIFormValues,
         { setSubmitting }: FormikHelpers<BMIFormValues>

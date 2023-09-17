@@ -6,7 +6,7 @@ import {
   Typography
 } from "@mui/material";
 import { Field, Form, Formik } from "formik";
-import { USER_DATA_FORM_VALIDATION } from "../../../utils/yup-schemas";
+import { USER_DATA_VALIDATION } from "../../../utils/yup-schemas";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 
@@ -50,14 +50,14 @@ const EditModal: React.FC<Props> = ({ open, handleClose, data }) => {
             height: (data.height ? data.height : 0),
             weight: (data.weight ? data.weight : 0)
           }}
-          validationSchema={USER_DATA_FORM_VALIDATION}
+          validationSchema={USER_DATA_VALIDATION}
           onSubmit={(values) => {
             if (values.height !== data.height || values.weight !== data.weight) {
               handleSubmit(values.height, values.weight);
             }
           }}
-        >{({ errors, touched }) => (
-          <Form className='edit-user-form'>
+        >{({ errors, touched, isValid }) => (
+          <Form className='user-form'>
             <Box>
               <Field
                 label='Height (in)'
@@ -90,6 +90,7 @@ const EditModal: React.FC<Props> = ({ open, handleClose, data }) => {
               type='submit'
               variant='contained'
               onClick={handleClose}
+              disabled={!isValid}
             >
               Submit
             </Button>
