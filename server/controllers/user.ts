@@ -100,3 +100,24 @@ export const saveNewEntry = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Internal server error', data: null });
   }
 };
+
+
+export const updateEntry = async (req: Request, res: Response) => {
+  const { email, id } = req.query;
+  const { dateArray, weight } = req.body;
+  const targetDate = new Date(dateArray[0], dateArray[1], dateArray[2]);
+  const newWeight = parseInt(weight);
+
+  try {
+    const user = await User.findOne({ email, id });
+
+    if (user) {
+      user.weight_entries.forEach((entry) => { if (entry.date.toString() === targetDate.toString()) entry.weight = newWeight });
+      await user.save();
+      res.status(201).json({ error: null, data: 'Entry saved' });
+    } else res.status(500).json({ error: 'User could not be found', data: null });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: 'Internal server error', data: null });
+  }
+};

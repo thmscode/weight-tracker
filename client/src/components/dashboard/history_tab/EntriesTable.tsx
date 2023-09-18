@@ -12,6 +12,7 @@ import {
 import { Entry } from "../../../utils/types";
 import { CustomTablePagination } from "./CustomTablePagination";
 import DeleteModal from "./DeleteModal";
+import EditEntryModal from "./EditEntryModal";
 
 type Modal = {
   open: boolean,
@@ -22,20 +23,18 @@ const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [openDeleteModal, setOpenDeleteModal] = useState<Modal>({ open: false, data: null });
+  const [openEditModal, setOpenEditModal] = useState<Modal>({ open: false, data: null });
 
   const handleOpenDeleteModal = (entry: Entry): void => setOpenDeleteModal({ open: true, data: entry });
-  
   const handleCloseDeleteModal = (): void => setOpenDeleteModal({ open: false, data: null });
 
-  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => setPage(newPage);
+  const handleOpenEditModal = (entry: Entry): void => setOpenEditModal({ open: true, data: entry });
+  const handleCloseEditModal = (): void => setOpenEditModal({ open: false, data: null });
 
+  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => setPage(newPage);
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
-  };
-
-  const editHandler = (entry: Entry) => {
-    console.log(`Edit ${entry.weight}`)
   };
 
   return (
@@ -59,7 +58,7 @@ const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
                 <TableCell align='center' sx={{ fontSize: '1.125rem' }}>{entry.weight}</TableCell>
                 <TableCell align='right' sx={{ display: 'flex', gap: '0.5rem' }}>
                   <Button variant='contained' color='error' onClick={() => handleOpenDeleteModal(entry)}>Delete</Button>
-                  <Button variant='contained' onClick={() => editHandler(entry)}>Edit</Button>
+                  <Button variant='contained' onClick={() => handleOpenEditModal(entry)}>Edit</Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -91,6 +90,10 @@ const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
       <DeleteModal
         state={openDeleteModal}
         handleClose={handleCloseDeleteModal}
+      />
+      <EditEntryModal
+        state={openEditModal}
+        handleClose={handleCloseEditModal}
       />
     </>
   );

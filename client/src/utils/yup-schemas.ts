@@ -32,4 +32,12 @@ export const NEW_ENTRY_VALIDATION = Yup.object().shape({
     .required('Weight is required'),
   date: Yup.date()
     .required('Date is required')
-})
+});
+
+export const EDIT_ENTRY_VALIDATION = Yup.object().shape({
+  weight: Yup.number()
+    .min(1, 'Please enter a valid weight (>1)')
+    .max(2000, 'Please enter a valid weight (<2000)')
+    .typeError('Height must be a number')
+    .required('Weight is required')
+});
