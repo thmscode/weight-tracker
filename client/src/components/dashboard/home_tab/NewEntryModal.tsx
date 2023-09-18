@@ -24,7 +24,7 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
 
   const handleSubmit = async (value: { weight: number, date: string }) => {
     const { weight, date } = value;
-    
+
     try {
       const token = await getAccessTokenSilently();
       const response = await axios.post(
@@ -49,7 +49,7 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
   return (
     <Dialog open={open} onClose={handleClose}>
       <Box p='2rem'>
-        <Typography variant='h5' pb='0.75rem'>New Entry</Typography>
+        <Typography variant='h5' pb='0.75rem'>New Weight Entry</Typography>
         <Formik
           initialValues={{
             weight: 0,
@@ -57,45 +57,54 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
           }}
           validationSchema={NEW_ENTRY_VALIDATION}
           onSubmit={(value) => handleSubmit(value)}
-        >{({ errors, touched, isValid }) => (
-          <Form className='user-form'>
-            <Box>
-              <Field
-                label='Weight (lbs)'
-                id='weight'
-                name='weight'
-                as={TextField}
-                variant='standard'
-              />
-              {errors.weight && touched.weight ? (
-                <div className='error-message'>
-                  {errors.weight}
-                </div>
-              ) : null}
-            </Box>
-            <Box>
-              <Field
-                id='date'
-                name='date'
-                as={TextField}
-                type='date'
-              />
-              {errors.date && touched.date ? (
-                <div className='error-message'>
-                  {errors.date}
-                </div>
-              ) : null}
-            </Box>
-            <Button
-              type='submit'
-              variant='contained'
-              onClick={handleClose}
-              disabled={!isValid}
-            >
-              Submit
-            </Button>
-          </Form>
-        )}
+        >
+          {({ errors, touched, isValid }) => (
+            <Form className='user-form'>
+              <Box>
+                <Field
+                  label='Weight (lbs)'
+                  id='weight'
+                  name='weight'
+                  as={TextField}
+                  variant='standard'
+                />
+                {errors.weight && touched.weight ? (
+                  <div className='error-message'>
+                    {errors.weight}
+                  </div>
+                ) : null}
+              </Box>
+              <Box>
+                <Field
+                  id='date'
+                  name='date'
+                  as={TextField}
+                  type='date'
+                />
+                {errors.date && touched.date ? (
+                  <div className='error-message'>
+                    {errors.date}
+                  </div>
+                ) : null}
+              </Box>
+              <Box display='flex' justifyContent='center' gap='0.75rem'>
+                <Button
+                  type='submit'
+                  variant='contained'
+                  onClick={handleClose}
+                  disabled={!isValid}
+                >
+                  Submit
+                </Button>
+                <Button
+                  variant='contained'
+                  onClick={handleClose}
+                >
+                  Cancel
+                </Button>
+              </Box>
+            </Form>
+          )}
         </Formik>
       </Box>
     </Dialog>

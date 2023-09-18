@@ -34,8 +34,7 @@ const EditUserModal: React.FC<Props> = ({ open, handleClose, data }) => {
       if (!error) {
         console.log(data);
         window.location.reload();
-      }
-      else throw Error();
+      } else throw Error();
     } catch (e) {
       console.log(e);
     }
@@ -44,7 +43,7 @@ const EditUserModal: React.FC<Props> = ({ open, handleClose, data }) => {
   return (
     <Dialog open={open} onClose={handleClose}>
       <Box p='2rem'>
-        <Typography variant='h5' pb='0.75rem'>Edit Personal Information</Typography>
+        <Typography variant='h5' pb='0.75rem'>Edit Information</Typography>
         <Formik
           initialValues={{
             height: (data.height ? data.height : 0),
@@ -86,14 +85,22 @@ const EditUserModal: React.FC<Props> = ({ open, handleClose, data }) => {
                 </div>
               ) : null}
             </Box>
-            <Button
-              type='submit'
-              variant='contained'
-              onClick={handleClose}
-              disabled={!isValid}
-            >
-              Submit
-            </Button>
+            <Box mt='1rem' display='flex' justifyContent='center' gap='0.75rem'>
+              <Button
+                type='submit'
+                variant='contained'
+                onClick={handleClose}
+                disabled={!isValid}
+              >
+                Submit
+              </Button>
+              <Button
+                variant='contained'
+                onClick={handleClose}
+              >
+                Cancel
+              </Button>
+            </Box>
           </Form>
         )}
         </Formik>

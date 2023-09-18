@@ -20,12 +20,8 @@ const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
   const { user, getAccessTokenSilently } = useAuth0();
 
   const getDateArray = (entry: Entry) => {
-    const temp = (entry.date.toString().split('-')).map(x => parseInt(x));
-    const array = temp.map((x, i) => {
-      if (i === 1) return x - 1;
-      return x
-    });
-    return array;
+    const temp = (entry.date.toString().split('-')).map((x, i) => i === 1 ? parseInt(x) - 1 : parseInt(x));
+    return temp;
   };
 
   const handleDelete = async (entry: Entry | null) => {
@@ -61,8 +57,20 @@ const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
         <Typography>This action is irreversible.</Typography>
         <Typography>Are you sure you want to delete this entry?</Typography>
         <Box mt='1rem' display='flex' gap='0.5rem'>
-          <Button variant='contained' color='success' onClick={() => handleDelete(state.data)}>Confirm</Button>
-          <Button variant='contained' onClick={handleClose}>Cancel</Button>
+          <Button
+            type='submit'
+            variant='contained'
+            color='error'
+            onClick={() => handleDelete(state.data)}
+          >
+            Delete
+          </Button>
+          <Button
+            variant='contained'
+            onClick={handleClose}
+          >
+            Cancel
+          </Button>
         </Box>
       </Box>
     </Dialog>
