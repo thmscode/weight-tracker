@@ -18,7 +18,7 @@ const formatEntries = (entries: Entry[]): FormattedEntry[] => {
 const getRecentEntries = (entries: Entry[]): FormattedEntry[] => {
   const data = formatEntries(entries);
 
-  if (data.length <= 8) return data;
+  if (data.length <= 8) return data.reverse();
   else {
     const recent = [];
     for (let i = data.length - 1; i > data.length - 1 - 8; i--) {
