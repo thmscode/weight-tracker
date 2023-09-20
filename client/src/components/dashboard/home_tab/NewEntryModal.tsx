@@ -24,12 +24,13 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
 
   const handleSubmit = async (value: { weight: number, date: string }) => {
     const { weight, date } = value;
+    const dateArray = date.split('-').map((x: string, i: number) => i === 1 ? parseInt(x) - 1 : parseInt(x));
 
     try {
       const token = await getAccessTokenSilently();
       const response = await axios.post(
         '/api/user/dashboard/newEntry',
-        { weight, date },
+        { weight, dateArray },
         {
           headers: { Authorization: `Bearer ${token}` },
           params: { email: user!.email, id: user!.sub }
