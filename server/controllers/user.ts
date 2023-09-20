@@ -1,6 +1,10 @@
 import { Request, Response } from "express";
 import User from "../models/user";
-import { calculateBMI, formatEntries } from "../utils";
+import {
+  arrayToDate,
+  calculateBMI,
+  formatEntries
+} from "../utils";
 
 export const getUserData = async (req: Request, res: Response) => {
   const { email, id } = req.query;
@@ -52,14 +56,13 @@ export const getEntries = async (req: Request, res: Response) => {
 
 export const deleteEntry = async (req: Request, res: Response) => {
   const { email, id } = req.query;
-  const { dateArray, weight } = req.body;
-  const date = new Date(dateArray[0], dateArray[1], dateArray[2]);
+  const date = arrayToDate(req.body.dateArray);
 
   try {
     const user = await User.findOne({ email, id });
     if (user) {
       const entries = user.weight_entries;
-      const index = entries.findIndex(entry => entry.date.toString() === date.toString() && entry.weight === parseInt(weight));
+      const index = entries.findIndex(entry => entry.date.toString() === date.toString() && entry.weight === parseInt(req.body.weight));
       if (index >= 0) {
         entries.splice(index, 1);
         user.weight_entries = entries;
@@ -76,9 +79,7 @@ export const deleteEntry = async (req: Request, res: Response) => {
 
 export const saveNewEntry = async (req: Request, res: Response) => {
   const { email, id } = req.query;
-  const weight = parseInt(req.body.weight);
-  const dateArray = req.body.date.split('-').map((x: string, i: number) => i === 1 ? parseInt(x) - 1 : parseInt(x));
-  const enteredDate = new Date(dateArray[0], dateArray[1], dateArray[2]);
+  const enteredDate = arrayToDate(req.body.dateArray);
 
   try {
     const user = await User.findOne({ email, id });
@@ -88,7 +89,7 @@ export const saveNewEntry = async (req: Request, res: Response) => {
       const found = entries.find((entry) => entry.date.toString() === enteredDate.toString());
       if (found) res.status(400).json({ error: 'Entry already exists', data: null });
       else {
-        entries.push({ date: enteredDate, weight });
+        entries.push({ date: enteredDate, weight: req.body.weight });
         entries.sort((a, b) => a.date.getTime() - b.date.getTime());
         user.weight_entries = entries;
         await user.save();
@@ -104,9 +105,8 @@ export const saveNewEntry = async (req: Request, res: Response) => {
 
 export const updateEntry = async (req: Request, res: Response) => {
   const { email, id } = req.query;
-  const { dateArray, weight } = req.body;
-  const targetDate = new Date(dateArray[0], dateArray[1], dateArray[2]);
-  const newWeight = parseInt(weight);
+  const targetDate = arrayToDate(req.body.dateArray);
+  const newWeight = parseInt(req.body.weight);
 
   try {
     const user = await User.findOne({ email, id });

@@ -15,3 +15,6 @@ export const formatEntries = (entries: { date: Date, weight: number }[]) => {
 
   return formatted;
 };
+
+export const arrayToDate = (array: number[]): Date => new Date(array[0], array[1], array[2]);
+
