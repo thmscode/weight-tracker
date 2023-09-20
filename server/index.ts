@@ -5,7 +5,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import userRouter from './routes/user';
-import { validateAccessToken } from './middleware/auth0_middleware';
+import { validateAccessToken } from './middleware/middleware';
 
 // reading environment variables & using them to initialize variables
 dotenv.config();
