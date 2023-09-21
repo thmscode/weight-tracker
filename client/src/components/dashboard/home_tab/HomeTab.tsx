@@ -5,6 +5,7 @@ import { TabProps, UserObj } from "../../../utils/types";
 import axios from "axios";
 import Info from './Info';
 import Data from './Data';
+import { renderErrorToast, renderSuccessToast } from '../../../utils/toasts';
 
 const HomeTab: React.FC<TabProps> = ({ value, index }) => {
   const { user, getAccessTokenSilently } = useAuth0();
@@ -21,11 +22,17 @@ const HomeTab: React.FC<TabProps> = ({ value, index }) => {
             params: { email: user!.email, id: user!.sub }
           }
         )
-        const { error, data } = response.data;
-        if (!error) setUserData(data);
-        else throw Error();
+        const { error, data, msg } = response.data;
+        if (!error) {
+          setUserData(data);
+          renderSuccessToast(msg);
+        } else {
+          renderErrorToast(msg);
+          throw Error();
+        }
       } catch (e) {
         console.log(e);
+        renderErrorToast('Something went wrong...');
       }
     };
 

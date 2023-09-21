@@ -7,6 +7,7 @@ import {
 import axios from "axios";
 import { Entry } from '../../../utils/types';
 import { useAuth0 } from '@auth0/auth0-react';
+import { renderErrorToast, renderSuccessToast } from '../../../utils/toasts';
 
 type Props = {
   state: {
@@ -40,13 +41,17 @@ const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
           }
         }
       );
-      const { error, data } = response.data;
+      const { error, msg } = response.data;
       if (!error) {
-        console.log(data);
-        window.location.reload();
-      } else throw Error();
+        renderSuccessToast(msg);
+        setTimeout(() => window.location.reload(), 1500);
+      } else {
+        renderErrorToast(msg);
+        throw Error();
+      }
     } catch (e) {
       console.log(e);
+      renderErrorToast('Something went wrong...');
     }
   };
 

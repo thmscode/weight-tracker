@@ -9,6 +9,7 @@ import { Field, Form, Formik } from 'formik';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import { NEW_ENTRY_VALIDATION } from "../../../utils/yup-schemas";
+import { renderErrorToast, renderSuccessToast } from "../../../utils/toasts";
 
 type Props = {
   open: boolean;
@@ -36,14 +37,17 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
           params: { email: user!.email, id: user!.sub }
         }
       );
-      const { error, data } = response.data;
+      const { error, msg } = response.data;
       if (!error) {
-        console.log(data);
-        window.location.reload();
+        renderSuccessToast(msg);
+        setTimeout(() => window.location.reload(), 1500);
+      } else {
+        renderErrorToast(msg);
+        throw Error();
       }
-      else throw Error();
     } catch (e) {
       console.log(e);
+      renderErrorToast('Something went wrong...');
     }
   };
 

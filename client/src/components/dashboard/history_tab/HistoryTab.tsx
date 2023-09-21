@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Entry, TabProps } from "../../../utils/types";
 import axios from "axios";
 import EntriesTable from './EntriesTable';
+import { renderErrorToast, renderSuccessToast } from '../../../utils/toasts';
 
 const HistoryTab: React.FC<TabProps> = ({ value, index }) => {
   const { user, getAccessTokenSilently } = useAuth0();
@@ -20,11 +21,17 @@ const HistoryTab: React.FC<TabProps> = ({ value, index }) => {
             params: { email: user!.email, id: user!.sub }
           }
         )
-        const { error, data } = response.data;
-        if (!error) setData(data.reverse());
-        else throw Error();
+        const { error, data, msg } = response.data;
+        if (!error) {
+          setData(data.reverse());
+          renderSuccessToast(msg);
+        } else {
+          renderErrorToast(msg);
+          throw Error();
+        }
       } catch (e) {
         console.log(e);
+        renderErrorToast('Something went wrong...');
       }
     };
 
