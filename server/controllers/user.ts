@@ -12,11 +12,11 @@ export const getUserData = async (req: Request, res: Response) => {
   try {
     const user = await User.findOne({ email, id });
 
-    if (user) res.status(200).json({ error: null, data: user });
-    else res.status(500).json({ error: 'User could not be found', data: null });
+    if (user) res.status(200).json({ error: false, data: user, msg: 'Profile loaded.' });
+    else res.status(500).json({ error: true, data: null, msg: 'User could not be found.' });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: 'Internal server error', data: null });
+    res.status(500).json({ error: true, data: null, msg: 'Internal server error. Please refresh.' });
   }
 };
 
@@ -28,10 +28,10 @@ export const updateUserData = async (req: Request, res: Response) => {
 
   try {
     await User.findOneAndUpdate({ email, id }, { height, weight, bmi });
-    res.status(201).json({ error: null, data: 'User updated' });
+    res.status(201).json({ error: false, data: null, msg: 'User updated.' });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: 'Internal server error', data: null });
+    res.status(500).json({ error: true, data: null, msg: 'Internal server error. Please refresh.' });
   }
 };
 
@@ -44,12 +44,12 @@ export const getEntries = async (req: Request, res: Response) => {
 
     if (user) {
       const data = formatEntries(user.weight_entries);
-      res.status(200).json({ error: null, data });
+      res.status(200).json({ error: false, data, msg: 'Entries loaded.' });
     }
-    else res.status(500).json({ error: 'User could not be found', data: null });
+    else res.status(500).json({ error: true, data: null, msg: 'User could not be found.' });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: 'Internal server error', data: null });
+    res.status(500).json({ error: true, data: null, msg: 'Internal server error. Please refresh.' });
   }
 };
 
@@ -67,12 +67,12 @@ export const deleteEntry = async (req: Request, res: Response) => {
         entries.splice(index, 1);
         user.weight_entries = entries;
         await user.save();
-        res.status(200).json({ error: null, data: 'Entry removed' });
-      } else res.status(400).json({ error: 'Entry does not exist', data: null });
-    } else res.status(500).json({ error: 'User could not be found', data: null });
+        res.status(200).json({ error: false, data: null, msg: 'Entry removed.' });
+      } else res.status(400).json({ error: true, data: null, msg: 'Entry does not exist.' });
+    } else res.status(500).json({ error: true, data: null, msg: 'User could not be found.' });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: 'Internal server error', data: null });
+    res.status(500).json({ error: true, data: null, msg: 'Internal server error. Please refresh.' });
   }
 };
 
@@ -87,18 +87,18 @@ export const saveNewEntry = async (req: Request, res: Response) => {
     if (user) {
       const entries = user.weight_entries;
       const found = entries.find((entry) => entry.date.toString() === enteredDate.toString());
-      if (found) res.status(400).json({ error: 'Entry already exists', data: null });
+      if (found) res.status(400).json({ error: true, data: null, msg: 'Entry already exists for that date.' });
       else {
         entries.push({ date: enteredDate, weight: req.body.weight });
         entries.sort((a, b) => a.date.getTime() - b.date.getTime());
         user.weight_entries = entries;
         await user.save();
-        res.status(201).json({ error: null, data: 'Entry saved' });
+        res.status(201).json({ error: false, data: null, msg: 'Entry saved.' });
       }
-    } else res.status(500).json({ error: 'User could not be found', data: null });
+    } else res.status(500).json({ error: true, data: null, msg: 'User could not be found.' });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: 'Internal server error', data: null });
+    res.status(500).json({ error: true, data: null, msg: 'Internal server error. Please refresh.' });
   }
 };
 
@@ -114,10 +114,10 @@ export const updateEntry = async (req: Request, res: Response) => {
     if (user) {
       user.weight_entries.forEach((entry) => { if (entry.date.toString() === targetDate.toString()) entry.weight = newWeight });
       await user.save();
-      res.status(201).json({ error: null, data: 'Entry saved' });
-    } else res.status(500).json({ error: 'User could not be found', data: null });
+      res.status(201).json({ error: false, data: null, msg: 'Entry updated.' });
+    } else res.status(500).json({ error: true, data: null, msg: 'User could not be found.' });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: 'Internal server error', data: null });
+    res.status(500).json({ error: true, data: null, msg: 'Internal server error. Please refresh.' });
   }
 };
