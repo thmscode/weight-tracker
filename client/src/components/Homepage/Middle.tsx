@@ -17,6 +17,12 @@ const SellingPoint: React.FC<{ children?: React.ReactNode }> = ({ children }) =>
   );
 }
 
+const Subheader: React.FC<{ text: string }> = ({ text }) => {
+  return (
+    <Typography variant='h6' sx={{ textTransform: 'capitalize' }}>{text}</Typography>
+  );
+}
+
 const Middle = () => {
   return (
     <Box
@@ -37,19 +43,19 @@ const Middle = () => {
         gap='8rem'
       >
         <SellingPoint>
-          <Typography variant='h6'>Set Your Goals</Typography>
+          <Subheader text='set your goals' />
           <GrFlag size={84} />
         </SellingPoint>
         <SellingPoint>
-          <Typography variant='h6'>Learn About Exercise</Typography>
+          <Subheader text='learn about exercise' />
           <MdSchool size={84} />
         </SellingPoint>
         <SellingPoint>
-          <Typography variant='h6'>Track Your Weight</Typography>
+          <Subheader text='track your weight' />
           <BsJournalRichtext size={84} />
         </SellingPoint>
         <SellingPoint>
-          <Typography variant='h6'>Achieve Your Goals</Typography>
+          <Subheader text='achieve your goals' />
           <BiLineChartDown size={84} />
         </SellingPoint>
       </Box>
