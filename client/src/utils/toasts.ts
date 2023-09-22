@@ -23,3 +23,15 @@ export const renderErrorToast = (msg: string) =>
     progress: undefined,
     theme: "light",
   });
+
+export const renderInfoToast = (msg: string) =>
+  toast.info(msg, {
+    position: "bottom-center",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });

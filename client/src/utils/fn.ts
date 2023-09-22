@@ -1,0 +1,1 @@
+export const getDateArray = (date: string): number[] => date.split('-').map((x, i) => i === 1 ? parseInt(x) - 1 : parseInt(x));
