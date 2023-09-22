@@ -10,7 +10,8 @@ import axios from "axios";
 import { Entry } from '../../../utils/types';
 import { useAuth0 } from '@auth0/auth0-react';
 import { EDIT_ENTRY_VALIDATION } from '../../../utils/yup-schemas';
-import { renderErrorToast, renderSuccessToast } from '../../../utils/toasts';
+import { renderErrorToast, renderInfoToast, renderSuccessToast } from '../../../utils/toasts';
+import { getDateArray } from '../../../utils/fn';
 
 type Props = {
   state: {
@@ -23,36 +24,18 @@ type Props = {
 const EditEntryModal: React.FC<Props> = ({ state, handleClose }) => {
   const { user, getAccessTokenSilently } = useAuth0();
 
-  const getDateArray = (date: Date) => {
-    const temp = (date.toString().split('-')).map((x, i) => i === 1 ? parseInt(x) - 1 : parseInt(x));
-    return temp;
-  };
-
   const handleSubmit = async (date: Date | undefined, weight: number | undefined) => {
-    const dateArray = getDateArray(date!);
+    const dateArray = getDateArray(date!.toString());
 
-    try {
-      const token = await getAccessTokenSilently();
-      const response = await axios.post(
-        '/api/user/dashboard/updateEntry',
-        { dateArray, weight },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-          params: { email: user!.email, id: user!.sub }
-        }
-      );
-      const { error, msg } = response.data;
-      if (!error) {
-        renderSuccessToast(msg);
-        setTimeout(() => window.location.reload(), 1500);
-      } else {
-        renderErrorToast(msg);
-        throw Error();
+    const token = await getAccessTokenSilently();
+    return await axios.post(
+      '/api/user/dashboard/updateEntry',
+      { dateArray, weight },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { email: user!.email, id: user!.sub }
       }
-    } catch (e) {
-      console.log(e);
-      renderErrorToast('Something went wrong...');
-    }
+    );
   };
 
   return (
@@ -67,8 +50,17 @@ const EditEntryModal: React.FC<Props> = ({ state, handleClose }) => {
           validationSchema={EDIT_ENTRY_VALIDATION}
           onSubmit={(values) => {
             if (values.weight !== state.data?.weight) {
-              handleSubmit(values.date, values.weight);
-            }
+              handleSubmit(values.date, values.weight)
+                .then(response => {
+                  const { error, msg } = response.data;
+                  if (!error) {
+                    renderSuccessToast(msg);
+                    handleClose();
+                    setTimeout(() => window.location.reload(), 1500);
+                  } else renderErrorToast(msg);
+                })
+                .catch(e => renderErrorToast(e.response.data.msg));
+            } else renderInfoToast('Please enter a new weight.');
           }}
         >
           {({ errors, touched, isValid }) => (
@@ -97,14 +89,13 @@ const EditEntryModal: React.FC<Props> = ({ state, handleClose }) => {
                   </div>
                 ) : null}
               </Box>
-              <Box mt='1rem' display='flex' gap='0.5rem'>
+              <Box mt='1rem' display='flex' justifyContent='center' gap='0.75rem'>
                 <Button
                   type='submit'
                   variant='contained'
-                  onClick={handleClose}
                   disabled={!isValid}
                 >
-                  Confirm
+                  Submit
                 </Button>
                 <Button
                   variant='contained'
