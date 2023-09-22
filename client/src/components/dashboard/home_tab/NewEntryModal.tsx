@@ -54,6 +54,7 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
                 const { error, msg } = response.data;
                 if (!error) {
                   renderSuccessToast(msg);
+                  handleClose();
                   setTimeout(() => window.location.reload(), 1500);
                 } else renderErrorToast(msg);
               })
@@ -93,7 +94,6 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
                 <Button
                   type='submit'
                   variant='contained'
-                  onClick={handleClose}
                   disabled={!isValid}
                 >
                   Submit

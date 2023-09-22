@@ -42,8 +42,11 @@ const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
     <Dialog open={state.open} onClose={handleClose}>
       <Box p='2rem'>
         <Typography variant='h5' pb='0.75rem'>Delete Entry?</Typography>
-        <Typography>This action is irreversible.</Typography>
-        <Typography>Are you sure you want to delete this entry?</Typography>
+        <Typography pb='0.5rem'>This action is irreversible.</Typography>
+        <>
+          <Typography>Are you sure you want to</Typography>
+          <Typography>delete this entry?</Typography>
+        </>
         <Box mt='1rem' display='flex' gap='0.5rem'>
           <Button
             type='submit'
