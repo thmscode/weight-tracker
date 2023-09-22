@@ -13,30 +13,26 @@ const HomeTab: React.FC<TabProps> = ({ value, index }) => {
 
   useEffect(() => {
     const getData = async () => {
-      try {
-        const token = await getAccessTokenSilently();
-        const response = await axios.get(
-          '/api/user/dashboard',
-          {
-            headers: { Authorization: `Bearer ${token}` },
-            params: { email: user!.email, id: user!.sub }
-          }
-        )
+      const token = await getAccessTokenSilently();
+
+      return await axios.get(
+        '/api/user/dashboard',
+        {
+          headers: { Authorization: `Bearer ${token}` },
+          params: { email: user!.email, id: user!.sub }
+        }
+      );
+    };
+
+    getData()
+      .then(response => {
         const { error, data, msg } = response.data;
         if (!error) {
           setUserData(data);
           renderSuccessToast(msg);
-        } else {
-          renderErrorToast(msg);
-          throw Error();
-        }
-      } catch (e) {
-        console.log(e);
-        renderErrorToast('Something went wrong...');
-      }
-    };
-
-    getData();
+        } else renderErrorToast(msg);
+      })
+      .catch(e => renderErrorToast(e.response.data.msg));
   }, [user, getAccessTokenSilently]);
 
   return (

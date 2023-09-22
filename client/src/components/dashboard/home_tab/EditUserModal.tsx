@@ -9,7 +9,11 @@ import { Field, Form, Formik } from "formik";
 import { USER_DATA_VALIDATION } from "../../../utils/yup-schemas";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-import { renderErrorToast, renderSuccessToast } from "../../../utils/toasts";
+import {
+  renderErrorToast,
+  renderInfoToast,
+  renderSuccessToast
+} from "../../../utils/toasts";
 
 type Props = {
   open: boolean;
@@ -21,28 +25,16 @@ const EditUserModal: React.FC<Props> = ({ open, handleClose, data }) => {
   const { user, getAccessTokenSilently } = useAuth0();
 
   const handleSubmit = async (height: number, weight: number) => {
-    try {
-      const token = await getAccessTokenSilently();
-      const response = await axios.post(
-        '/api/user/dashboard/updateUserData',
-        { height, weight },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-          params: { email: user!.email, id: user!.sub }
-        }
-      );
-      const { error, msg } = response.data;
-      if (!error) {
-        renderSuccessToast(msg);
-        setTimeout(() => window.location.reload(), 1500);
-      } else {
-        renderErrorToast(msg);
-        throw Error();
+    const token = await getAccessTokenSilently();
+
+    return await axios.post(
+      '/api/user/dashboard/updateUserData',
+      { height, weight },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { email: user!.email, id: user!.sub }
       }
-    } catch (e) {
-      console.log(e);
-      renderErrorToast('Something went wrong...');
-    }
+    );
   };
 
   return (
@@ -57,8 +49,16 @@ const EditUserModal: React.FC<Props> = ({ open, handleClose, data }) => {
           validationSchema={USER_DATA_VALIDATION}
           onSubmit={(values) => {
             if (values.height !== data.height || values.weight !== data.weight) {
-              handleSubmit(values.height, values.weight);
-            }
+              handleSubmit(values.height, values.weight)
+                .then(response => {
+                  const { error, msg } = response.data;
+                  if (!error) {
+                    renderSuccessToast(msg);
+                    setTimeout(() => window.location.reload(), 1500);
+                  } else renderErrorToast(msg);
+                })
+                .catch(e => renderErrorToast(e.response.data.msg));
+            } else renderInfoToast('Please enter new values.');
           }}
         >{({ errors, touched, isValid }) => (
           <Form className='user-form'>

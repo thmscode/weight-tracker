@@ -8,6 +8,7 @@ import axios from "axios";
 import { Entry } from '../../../utils/types';
 import { useAuth0 } from '@auth0/auth0-react';
 import { renderErrorToast, renderSuccessToast } from '../../../utils/toasts';
+import { getDateArray } from '../../../utils/fn';
 
 type Props = {
   state: {
@@ -20,39 +21,21 @@ type Props = {
 const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
   const { user, getAccessTokenSilently } = useAuth0();
 
-  const getDateArray = (entry: Entry) => {
-    const temp = (entry.date.toString().split('-')).map((x, i) => i === 1 ? parseInt(x) - 1 : parseInt(x));
-    return temp;
-  };
-
   const handleDelete = async (entry: Entry | null) => {
-    const dateArray = getDateArray(entry!);
+    const dateArray = getDateArray(entry!.date.toString());
+    const token = await getAccessTokenSilently();
 
-    try {
-      const token = await getAccessTokenSilently();
-      const response = await axios.delete(
-        '/api/user/dashboard/deleteEntry',
-        {
-          headers: { Authorization: `Bearer ${token}` },
-          params: { email: user!.email, id: user!.sub },
-          data: {
-            dateArray,
-            weight: entry!.weight
-          }
+    return await axios.delete(
+      '/api/user/dashboard/deleteEntry',
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { email: user!.email, id: user!.sub },
+        data: {
+          dateArray,
+          weight: entry!.weight
         }
-      );
-      const { error, msg } = response.data;
-      if (!error) {
-        renderSuccessToast(msg);
-        setTimeout(() => window.location.reload(), 1500);
-      } else {
-        renderErrorToast(msg);
-        throw Error();
       }
-    } catch (e) {
-      console.log(e);
-      renderErrorToast('Something went wrong...');
-    }
+    );
   };
 
   return (
@@ -66,7 +49,18 @@ const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
             type='submit'
             variant='contained'
             color='error'
-            onClick={() => handleDelete(state.data)}
+            onClick={() => {
+              handleDelete(state.data)
+                .then(response => {
+                  const { error, msg } = response.data;
+                  if (!error) {
+                    renderSuccessToast(msg);
+                    handleClose();
+                    setTimeout(() => window.location.reload(), 1500);
+                  } else renderErrorToast(msg);
+                })
+                .catch(e => renderErrorToast(e.response.data.msg));
+            }}
           >
             Delete
           </Button>

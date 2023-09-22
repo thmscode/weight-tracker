@@ -10,6 +10,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import { NEW_ENTRY_VALIDATION } from "../../../utils/yup-schemas";
 import { renderErrorToast, renderSuccessToast } from "../../../utils/toasts";
+import { getDateArray } from "../../../utils/fn";
 
 type Props = {
   open: boolean;
@@ -23,32 +24,18 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
   const month = (date.getMonth() < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
   const day = date.getDate();
 
-  const handleSubmit = async (value: { weight: number, date: string }) => {
-    const { weight, date } = value;
-    const dateArray = date.split('-').map((x: string, i: number) => i === 1 ? parseInt(x) - 1 : parseInt(x));
+  const handleSubmit = async (weight: number, date: string) => {
+    const dateArray = getDateArray(date);
+    const token = await getAccessTokenSilently();
 
-    try {
-      const token = await getAccessTokenSilently();
-      const response = await axios.post(
-        '/api/user/dashboard/newEntry',
-        { weight, dateArray },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-          params: { email: user!.email, id: user!.sub }
-        }
-      );
-      const { error, msg } = response.data;
-      if (!error) {
-        renderSuccessToast(msg);
-        setTimeout(() => window.location.reload(), 1500);
-      } else {
-        renderErrorToast(msg);
-        throw Error();
+    return await axios.post(
+      '/api/user/dashboard/newEntry',
+      { weight, dateArray },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+        params: { email: user!.email, id: user!.sub }
       }
-    } catch (e) {
-      console.log(e);
-      renderErrorToast('Something went wrong...');
-    }
+    );
   };
 
   return (
@@ -61,7 +48,17 @@ const NewEntryModal: React.FC<Props> = ({ open, handleClose }) => {
             date: `${year}-${month}-${day}`
           }}
           validationSchema={NEW_ENTRY_VALIDATION}
-          onSubmit={(value) => handleSubmit(value)}
+          onSubmit={(value) => {
+            handleSubmit(value.weight, value.date)
+              .then(response => {
+                const { error, msg } = response.data;
+                if (!error) {
+                  renderSuccessToast(msg);
+                  setTimeout(() => window.location.reload(), 1500);
+                } else renderErrorToast(msg);
+              })
+              .catch(e => renderErrorToast(e.response.data.msg));
+          }}
         >
           {({ errors, touched, isValid }) => (
             <Form className='user-form'>
