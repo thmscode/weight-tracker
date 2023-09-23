@@ -19,7 +19,15 @@ const SellingPoint: React.FC<{ children?: React.ReactNode }> = ({ children }) =>
 
 const Subheader: React.FC<{ text: string }> = ({ text }) => {
   return (
-    <Typography variant='h6' sx={{ textTransform: 'capitalize' }}>{text}</Typography>
+    <Typography
+      variant='h6'
+      sx={{
+        textTransform: 'capitalize',
+        fontSize: { xs: '1rem', md: '1.25rem', lg: '1.5rem' }
+      }}
+    >
+      {text}
+    </Typography>
   );
 }
 
@@ -34,30 +42,52 @@ const Middle = () => {
         textAlign='center'
         variant='h4'
         fontWeight={600}
+        sx={{ fontSize: { xs: '1.5rem', md: '1.75rem', lg: '2rem' } }}
       >
         Learn. Track. Lose.
       </Typography>
       <Box
         mt='2rem'
         display='flex'
-        gap='8rem'
+        sx={{
+          flexDirection: { xs: 'column', sm: 'row' },
+          gap: { xs: '2rem', sm: '8rem', md: '4rem' },
+        }}
       >
-        <SellingPoint>
-          <Subheader text='set your goals' />
-          <GrFlag size={84} />
-        </SellingPoint>
-        <SellingPoint>
-          <Subheader text='learn about exercise' />
-          <MdSchool size={84} />
-        </SellingPoint>
-        <SellingPoint>
-          <Subheader text='track your weight' />
-          <BsJournalRichtext size={84} />
-        </SellingPoint>
-        <SellingPoint>
-          <Subheader text='achieve your goals' />
-          <BiLineChartDown size={84} />
-        </SellingPoint>
+        <Box
+          display='flex'
+          gap='2rem'
+          sx={{
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: { xs: '2rem', md: '4rem' }
+          }}
+        >
+          <SellingPoint>
+            <Subheader text='set your goals' />
+            <GrFlag className='icon' />
+          </SellingPoint>
+          <SellingPoint>
+            <Subheader text='learn about exercise' />
+            <MdSchool className='icon' />
+          </SellingPoint>
+        </Box>
+        <Box
+          display='flex'
+          gap='2rem'
+          sx={{
+            flexDirection: { xs: 'column', md: 'row' },
+            gap: { xs: '2rem', md: '4rem' }
+          }}
+        >
+          <SellingPoint>
+            <Subheader text='track your weight' />
+            <BsJournalRichtext className='icon' />
+          </SellingPoint>
+          <SellingPoint>
+            <Subheader text='achieve your goals' />
+            <BiLineChartDown className='icon' />
+          </SellingPoint>
+        </Box>
       </Box>
     </Box>
   );

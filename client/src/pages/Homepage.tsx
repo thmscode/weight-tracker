@@ -10,7 +10,7 @@ const Homepage = () => {
       <Box
         display='flex'
         flexDirection='column'
-        gap='7rem'
+        sx={{ gap: { xs: '2rem', sm: '4rem', md: '7rem' } }}
       >
         <Hero />
         <Middle />

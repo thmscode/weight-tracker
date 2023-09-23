@@ -53,6 +53,10 @@ export const DIFFICULTIES: string[] = [
 ];
 
 // Homepage
+export const HERO_HEADER: string = 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.';
+
+export const HERO_TEXT: string = 'Et repellat dignissimos, mollitia quidem illum quod sapiente eos qui nisi minima. Omnis sequi nobis facere voluptas ad fugiat explicabo sed alias! Tempora aperiam optio quo reiciendis error velit dolores ad.';
+
 export const HOMEPAGE_BLURBS: NameValueObj[] = [
   {
     name: 'A Stress-Free Approach to Weight Loss.',

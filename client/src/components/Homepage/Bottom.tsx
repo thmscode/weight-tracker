@@ -19,6 +19,7 @@ const Blurb: React.FC<Props> = ({ header, text }) => {
         textAlign='center'
         variant='h4'
         fontWeight={600}
+        sx={{ fontSize: { xs: '1.25rem', md: '1.75rem', lg: '2rem' } }}
       >
         {header}
       </Typography>
@@ -26,6 +27,7 @@ const Blurb: React.FC<Props> = ({ header, text }) => {
         textAlign='center'
         maxWidth='75%'
         lineHeight='1.75rem'
+        sx={{ fontSize: { xs: '0.75rem', sm: '1rem', md: '1.25rem' } }}
       >
         {text}
       </Typography>
@@ -41,12 +43,15 @@ const Bottom = () => {
       display='flex'
       flexDirection='column'
       alignItems='center'
-      mb='4rem'
-      gap='3rem'
+      sx={{
+        mt: '1rem',
+        mb: { xs: '1rem', sm: '2rem', lg: '4rem' },
+        gap: { xs: '1.5rem', md: '3rem' }
+      }}
     >
       {HOMEPAGE_BLURBS.map((blurb, index) => <Blurb key={index} header={blurb.name} text={blurb.value} />)}
       <Button
-        size='large'
+        size='small'
         variant='contained'
         sx={{ py: '1.25rem', px: '3rem' }}
         onClick={() => loginWithRedirect()}
