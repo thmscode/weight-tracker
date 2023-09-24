@@ -2,7 +2,7 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
-  Select,
+  Select
 } from "@mui/material";
 import { Field } from "formik";
 
@@ -10,7 +10,7 @@ type Props = {
   id: string;
   label: string;
   options: string[];
-};
+}
 
 const Dropdown: React.FC<Props> = ({ id, label, options }) => {
   return (

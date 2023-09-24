@@ -27,7 +27,6 @@ code {
 .exercise-form {
   display: flex;
   flex-grow: 1;
-  justify-content: space-between;
   gap: 1.25rem;
 }
 
@@ -37,14 +36,20 @@ code {
   gap: 2rem;
 }
 
-@media only screen and (max-width: 899px) {
+@media only screen and (max-width: 900px) {
   .icon {
     font-size: 63px;
+  }
+  .exercise-form {
+    flex-direction: column;
   }
 }
 
 @media only screen and (min-width: 900px) {
   .icon {
     font-size: 84px;
+  }
+  .exercise-form {
+    flex-direction: row;
   }
 }

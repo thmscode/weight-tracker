@@ -11,24 +11,39 @@ type Props = {
 const Details: React.FC<Props> = ({ muscle, equipment, difficulty }) => {
   const exerciseDetails: NameValueObj[] = [
     { name: 'Targets:', value: muscle },
-    { name: 'Required Equipment:', value: equipment.split('_').join(' ') },
+    { name: 'Equipment:', value: equipment.split('_').join(' ') },
     { name: 'Difficulty:', value: difficulty },
   ];
 
   return (
     <Box
       display='flex'
-      justifyContent='space-between'
       mb='1rem'
+      sx={{
+        flexDirection: { xs: 'column', sm: 'row' },
+        justifyContent: { sm: 'space-between' }
+      }}
     >
       {exerciseDetails.map((detail, index) =>
         <Box
           key={`exercise-${index}`}
           display='flex'
-          gap='0.5rem'
+          gap='0.25rem'
         >
-          <Typography textTransform='uppercase' letterSpacing='0.15rem'>{detail.name}</Typography>
-          <Typography textTransform='uppercase' fontWeight={600}>{detail.value}</Typography>
+          <Typography
+            textTransform='uppercase'
+            letterSpacing='0.15rem'
+            sx={{ fontSize: { xs: '0.75rem', md: '1rem', lg: '1.125rem' } }}
+          >
+            {detail.name}
+          </Typography>
+          <Typography
+            textTransform='uppercase'
+            fontWeight={600}
+            sx={{ fontSize: { xs: '0.75rem', md: '1rem', lg: '1.125rem' } }}
+          >
+            {detail.value}
+          </Typography>
         </Box>
       )}
     </Box>

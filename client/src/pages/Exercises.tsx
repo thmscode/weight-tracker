@@ -1,5 +1,5 @@
 import ContentContainer from "../components/ContentContainer";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { TYPES, MUSCLES, DIFFICULTIES } from "../utils/constants";
 import Card from "../components/exercises/Card";
@@ -8,6 +8,20 @@ import { Formik, Form } from "formik";
 import Dropdown from "../components/exercises/Dropdown";
 import axios from 'axios';
 import PageHeader from "../components/PageHeader";
+
+const Message: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <Typography
+      variant='h5'
+      sx={{
+        alignSelf: 'center',
+        fontSize: { xs: '1.25rem', sm: '1.5rem', md: '1.75rem' }
+      }}
+    >
+      {children}
+    </Typography>
+  );
+}
 
 const Exercises = () => {
   const [exerciseList, setExerciseList] = useState<Exercise[] | null>(null);
@@ -70,8 +84,9 @@ const Exercises = () => {
         {exerciseList ?
           exerciseList.length > 0 ?
             exerciseList.map((exercise, index) => <Card key={index} exercise={exercise} />) :
-            <Typography variant='h5' sx={{ alignSelf: 'center' }}>Search returned no results...</Typography> :
-          <Typography variant='h5' sx={{ alignSelf: 'center' }}>Search to get started</Typography>}
+            <Message>Search returned no results...</Message> :
+          <Message>Search to get started</Message>
+        }
       </Box>
     </ContentContainer>
   );
