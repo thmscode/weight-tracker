@@ -8,8 +8,7 @@ const PageHeader: React.FC<{ text: string }> = ({ text }) => {
       letterSpacing='0.125rem'
       sx={{
         fontSize: {
-          xs: '1rem',
-          sm: '1.25rem',
+          xs: '1.25rem',
           md: '1.5rem',
           lg: '1.75rem',
           xl: '2rem'

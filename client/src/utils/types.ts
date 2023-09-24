@@ -1,13 +1,3 @@
-// BMI Page
-export type BMIFormValues = {
-  height: number;
-  weight: number;
-};
-
-export type BMIFormProps = {
-  handler: (bmi: number) => void;
-};
-
 // Constants.ts, src/components/Exercises/Details.tsx
 export interface NameValueObj {
   name: string;
