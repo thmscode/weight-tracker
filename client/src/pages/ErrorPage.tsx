@@ -1,39 +1,63 @@
+import React from "react";
 import ContentContainer from "../components/ContentContainer";
-import Navbar from "../components/navbar/Navbar";
 import { Box, Link, Typography } from "@mui/material";
+import { STATUS_CODES } from "../utils/constants";
+
+const Header: React.FC<{ text: string }> = ({ text }) => {
+  return (
+    <Typography
+      variant='h4'
+      fontWeight={600}
+      sx={{
+        fontSize: {
+          xs: '1.25rem',
+          sm: '1.5rem',
+          md: '1.75rem',
+          lg: '2rem'
+        }
+      }}
+    >
+      {text}
+    </Typography>
+  );
+}
+
+const BodyText: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  return (
+    <Typography
+      variant='h5'
+      sx={{ fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem', } }}
+    >
+      {children}
+    </Typography>
+  );
+}
 
 const ErrorPage = () => {
   return (
-    <>
-      <Navbar />
-      <ContentContainer>
-        <Box
-          display='flex'
-          flexDirection='column'
-          gap='2rem'
-          mt='1rem'
-        >
-          <Typography variant='h4' sx={{ fontWeight: 600 }}>
-            Oops, looks like something went wrong!
-          </Typography>
-          <Typography variant='h5'>
-            We're not sure what happened but <em>something</em> happened, and it wasn't appreciated!
-          </Typography>
-          <Typography variant='h5'>
-            It could have been
-            a <Link href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400'>400</Link>...
-            a <Link href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401'>401</Link>...
-            a <Link href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403'>403</Link>...
-            a <Link href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404'>404</Link>...
-            a <Link href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500'>500</Link>...
-            The <Link href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Status'>list</Link> goes on...
-          </Typography>
-          <Typography variant='h5'>
-            Anyways... Let's get you back on <Link href="/">track</Link>.
-          </Typography>
-        </Box>
-      </ContentContainer>
-    </>
+    <ContentContainer>
+      <Box
+        display='flex'
+        flexDirection='column'
+        gap='1.5rem'
+        mt='1rem'
+      >
+        <Header text='Oops, looks like something went wrong!' />
+        <BodyText>
+          We're not sure what happened but <em>something</em> happened, and it wasn't appreciated!
+        </BodyText>
+        <BodyText>
+          It could have been
+          {STATUS_CODES.map((code, index) => (index !== STATUS_CODES.length - 1 ?
+            <>&nbsp;a <Link key={index} href={code.value}>{code.name}</Link>...</> :
+            <>&nbsp;The <Link key={index} href={code.value}>{code.name}</Link> goes on...</>
+          ))}
+        </BodyText>
+        <BodyText>
+          Anyways... Let's get you back on <Link href="/">track</Link>.
+        </BodyText>
+      </Box>
+    </ContentContainer>
   );
 }
 

@@ -71,3 +71,31 @@ export const HOMEPAGE_BLURBS: NameValueObj[] = [
     value: 'In tristique lacus non rhoncus suscipit. Nulla lorem nisl, eleifend eu sapien in, interdum lobortis mi. Duis augue magna, eleifend ullamcorper ornare at, gravida nec turpis. Nullam varius nisi et pulvinar fermentum. Morbi quis facilisis risus.'
   }
 ];
+
+// Error Page
+export const STATUS_CODES: NameValueObj[] = [
+  {
+    name: '400',
+    value: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400'
+  },
+  {
+    name: '401',
+    value: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401'
+  },
+  {
+    name: '403',
+    value: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403'
+  },
+  {
+    name: '404',
+    value: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404'
+  },
+  {
+    name: '500',
+    value: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500'
+  },
+  {
+    name: 'list',
+    value: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status'
+  }
+]
