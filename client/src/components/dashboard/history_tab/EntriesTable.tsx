@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import {
   Box,
   Button,
@@ -12,24 +12,19 @@ import {
 import { Entry } from "../../../utils/types";
 import { CustomTablePagination } from "./CustomTablePagination";
 import DeleteModal from "./DeleteModal";
-import EditEntryModal from "./EditEntryModal";
+import EditModal from "./EditModal";
+import { INITIAL_REDUCER_STATE, REDUCER_ACTION_TYPES } from "../../../utils/constants";
+import { reducer } from "../../../utils/fn";
 
-type Modal = {
-  open: boolean,
-  data: Entry | null
-}
+type Align = "center" | "left" | "right" | "justify" | "inherit" | undefined;
+
+const Cell: React.FC<{ placement: Align, text: string }> = ({ placement, text }) =>
+  <TableCell align={placement} sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.25rem' } }}>{text}</TableCell>
 
 const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
-  const [openDeleteModal, setOpenDeleteModal] = useState<Modal>({ open: false, data: null });
-  const [openEditModal, setOpenEditModal] = useState<Modal>({ open: false, data: null });
-
-  const handleOpenDeleteModal = (entry: Entry): void => setOpenDeleteModal({ open: true, data: entry });
-  const handleCloseDeleteModal = (): void => setOpenDeleteModal({ open: false, data: null });
-
-  const handleOpenEditModal = (entry: Entry): void => setOpenEditModal({ open: true, data: entry });
-  const handleCloseEditModal = (): void => setOpenEditModal({ open: false, data: null });
+  const [modalState, setModalState] = useReducer(reducer, INITIAL_REDUCER_STATE);
 
   const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => setPage(newPage);
   const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -39,13 +34,13 @@ const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
 
   return (
     <>
-      <Box py='1rem' px='12rem'>
+      <Box py='1rem'>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell sx={{ fontSize: '1.25rem' }}>Date</TableCell>
-              <TableCell align='center' sx={{ fontSize: '1.25rem' }}>Weight</TableCell>
-              <TableCell align='right' sx={{ fontSize: '1.25rem' }}>Actions</TableCell>
+              <Cell placement='left' text='Date' />
+              <Cell placement='center' text='Weight' />
+              <Cell placement='right' text='Actions' />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -54,11 +49,27 @@ const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
               : entries
             ).map((entry, index) => (
               <TableRow key={index}>
-                <TableCell sx={{ fontSize: '1.125rem' }}>{entry.date.toString()}</TableCell>
-                <TableCell align='center' sx={{ fontSize: '1.125rem' }}>{entry.weight}</TableCell>
-                <TableCell align='right' sx={{ display: 'flex', gap: '0.5rem' }}>
-                  <Button variant='contained' color='error' onClick={() => handleOpenDeleteModal(entry)}>Delete</Button>
-                  <Button variant='contained' onClick={() => handleOpenEditModal(entry)}>Edit</Button>
+                <Cell placement='left' text={entry.date.toString()} />
+                <Cell placement='center' text={entry.weight.toString()} />
+                <TableCell
+                  align='right'
+                  sx={{ display: 'flex', gap: '0.5rem', }}
+                >
+                  <Button
+                    size='small'
+                    variant='contained'
+                    color='error'
+                    onClick={() => setModalState({ type: REDUCER_ACTION_TYPES.OPEN_DELETE, payload: entry })}
+                  >
+                    Delete
+                  </Button>
+                  <Button
+                    size='small'
+                    variant='contained'
+                    onClick={() => setModalState({ type: REDUCER_ACTION_TYPES.OPEN_EDIT, payload: entry })}
+                  >
+                    Edit
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
@@ -86,14 +97,16 @@ const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
             </TableRow>
           </TableFooter>
         </Table>
-      </Box>
+      </Box >
       <DeleteModal
-        state={openDeleteModal}
-        handleClose={handleCloseDeleteModal}
+        open={modalState.openDeleteModal}
+        data={modalState.data}
+        handleClose={() => setModalState({ type: REDUCER_ACTION_TYPES.CLOSE_DELETE, payload: null })}
       />
-      <EditEntryModal
-        state={openEditModal}
-        handleClose={handleCloseEditModal}
+      <EditModal
+        open={modalState.openEditModal}
+        data={modalState.data}
+        handleClose={() => setModalState({ type: REDUCER_ACTION_TYPES.CLOSE_EDIT, payload: null })}
       />
     </>
   );

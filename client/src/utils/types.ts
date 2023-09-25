@@ -52,3 +52,9 @@ export type ModalAction = {
   type: string,
   payload: Entry | null
 };
+
+export type HistoryModalProps = {
+  open: boolean;
+  data: Entry | null;
+  handleClose: () => void;
+};

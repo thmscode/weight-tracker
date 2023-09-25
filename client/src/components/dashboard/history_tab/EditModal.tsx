@@ -7,21 +7,13 @@ import {
 } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import axios from "axios";
-import { Entry } from '../../../utils/types';
+import { HistoryModalProps } from '../../../utils/types';
 import { useAuth0 } from '@auth0/auth0-react';
 import { EDIT_ENTRY_VALIDATION } from '../../../utils/yup-schemas';
 import { renderErrorToast, renderInfoToast, renderSuccessToast } from '../../../utils/toasts';
 import { getDateArray } from '../../../utils/fn';
 
-type Props = {
-  state: {
-    open: boolean,
-    data: Entry | null
-  };
-  handleClose: () => void;
-};
-
-const EditEntryModal: React.FC<Props> = ({ state, handleClose }) => {
+const EditModal: React.FC<HistoryModalProps> = ({ open, data, handleClose }) => {
   const { user, getAccessTokenSilently } = useAuth0();
 
   const handleSubmit = async (date: Date | undefined, weight: number | undefined) => {
@@ -39,17 +31,17 @@ const EditEntryModal: React.FC<Props> = ({ state, handleClose }) => {
   };
 
   return (
-    <Dialog open={state.open} onClose={handleClose}>
+    <Dialog open={open} onClose={handleClose}>
       <Box p='2rem'>
         <Typography variant='h5' pb='0.75rem'>Edit Entry</Typography>
         <Formik
           initialValues={{
-            date: state.data?.date,
-            weight: state.data?.weight
+            date: data?.date,
+            weight: data?.weight
           }}
           validationSchema={EDIT_ENTRY_VALIDATION}
           onSubmit={(values) => {
-            if (values.weight !== state.data?.weight) {
+            if (values.weight !== data?.weight) {
               handleSubmit(values.date, values.weight)
                 .then(response => {
                   const { error, msg } = response.data;
@@ -89,7 +81,7 @@ const EditEntryModal: React.FC<Props> = ({ state, handleClose }) => {
                   </div>
                 ) : null}
               </Box>
-              <Box mt='1rem' display='flex' justifyContent='center' gap='0.75rem'>
+              <Box display='flex' justifyContent='center' gap='0.75rem'>
                 <Button
                   type='submit'
                   variant='contained'
@@ -112,4 +104,4 @@ const EditEntryModal: React.FC<Props> = ({ state, handleClose }) => {
   );
 }
 
-export default EditEntryModal;
+export default EditModal;

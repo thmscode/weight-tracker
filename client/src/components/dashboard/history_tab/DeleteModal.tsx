@@ -5,20 +5,12 @@ import {
   Typography
 } from '@mui/material';
 import axios from "axios";
-import { Entry } from '../../../utils/types';
+import { Entry, HistoryModalProps } from '../../../utils/types';
 import { useAuth0 } from '@auth0/auth0-react';
 import { renderErrorToast, renderSuccessToast } from '../../../utils/toasts';
 import { getDateArray } from '../../../utils/fn';
 
-type Props = {
-  state: {
-    open: boolean,
-    data: Entry | null
-  };
-  handleClose: () => void;
-};
-
-const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
+const DeleteModal: React.FC<HistoryModalProps> = ({ open, data, handleClose }) => {
   const { user, getAccessTokenSilently } = useAuth0();
 
   const handleDelete = async (entry: Entry | null) => {
@@ -39,7 +31,7 @@ const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
   };
 
   return (
-    <Dialog open={state.open} onClose={handleClose}>
+    <Dialog open={open} onClose={handleClose}>
       <Box p='2rem'>
         <Typography variant='h5' pb='0.75rem'>Delete Entry?</Typography>
         <Typography pb='0.5rem'>This action is irreversible.</Typography>
@@ -47,13 +39,13 @@ const DeleteModal: React.FC<Props> = ({ state, handleClose }) => {
           <Typography>Are you sure you want to</Typography>
           <Typography>delete this entry?</Typography>
         </>
-        <Box mt='1rem' display='flex' gap='0.5rem'>
+        <Box mt='1rem' display='flex' gap='0.75rem'>
           <Button
             type='submit'
             variant='contained'
             color='error'
             onClick={() => {
-              handleDelete(state.data)
+              handleDelete(data)
                 .then(response => {
                   const { error, msg } = response.data;
                   if (!error) {

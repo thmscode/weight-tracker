@@ -8,7 +8,7 @@ export const CustomTablePagination = styled(TablePagination)`
   align-items: flex-start;
   gap: 10px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 400px) {
     flex-direction: row;
     align-items: center;
   }

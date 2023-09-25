@@ -1,10 +1,23 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Entry, TabProps } from "../../../utils/types";
 import axios from "axios";
 import EntriesTable from './EntriesTable';
 import { renderErrorToast, renderSuccessToast } from '../../../utils/toasts';
+
+const Notice: React.FC<{ text: string }> = ({ text }) => {
+  return (
+    <Typography
+      py='1rem'
+      variant='h6'
+      textAlign='center'
+      sx={{ fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' } }}
+    >
+      {text}
+    </Typography>
+  );
+}
 
 const HistoryTab: React.FC<TabProps> = ({ value, index }) => {
   const { user, getAccessTokenSilently } = useAuth0();
@@ -38,7 +51,7 @@ const HistoryTab: React.FC<TabProps> = ({ value, index }) => {
     <Box hidden={value !== index}>
       {value === index &&
         (data === null || data.length === 0) &&
-        <Typography py='0.5rem' px='1rem' variant='h6'>No data yet...</Typography>}
+        <Notice text='Make an entry to get started!' />}
       {value === index &&
         data &&
         data.length > 0 &&
