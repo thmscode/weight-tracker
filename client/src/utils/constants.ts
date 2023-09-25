@@ -1,4 +1,4 @@
-import { NameValueObj } from "./types";
+import { NameValueObj, ModalState } from "./types";
 
 // Navbar
 export const NAV_ROUTES: NameValueObj[] = [
@@ -98,4 +98,18 @@ export const STATUS_CODES: NameValueObj[] = [
     name: 'list',
     value: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status'
   }
-]
+];
+
+// Dashboard (History)
+export const INITIAL_REDUCER_STATE: ModalState = {
+  data: null,
+  openDeleteModal: false,
+  openEditModal: false,
+};
+
+export const REDUCER_ACTION_TYPES = {
+  OPEN_DELETE: 'OPEN_DELETE_MODAL',
+  CLOSE_DELETE: 'CLOSE_DELETE_MODAL',
+  OPEN_EDIT: 'OPEN_EDIT_MODAL',
+  CLOSE_EDIT: 'CLOSE_EDIT_MODAL'
+};

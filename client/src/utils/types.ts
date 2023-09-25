@@ -41,3 +41,14 @@ export type FormattedEntry = {
   date: string,
   weight: string
 };
+
+export type ModalState = {
+  data: Entry | null,
+  openDeleteModal: boolean,
+  openEditModal: boolean
+};
+
+export type ModalAction = {
+  type: string,
+  payload: Entry | null
+};
