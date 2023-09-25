@@ -18,8 +18,8 @@ import { reducer } from "../../../utils/fn";
 
 type Align = "center" | "left" | "right" | "justify" | "inherit" | undefined;
 
-const Cell: React.FC<{ placement: Align, text: string }> = ({ placement, text }) =>
-  <TableCell align={placement} sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.25rem' } }}>{text}</TableCell>
+const Cell: React.FC<{ placement: Align, children: React.ReactNode }> = ({ placement, children }) =>
+  <TableCell align={placement} sx={{ fontSize: { xs: '0.8rem', sm: '1rem', md: '1.25rem' } }}>{children}</TableCell>
 
 const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
   const [page, setPage] = useState<number>(0);
@@ -38,9 +38,9 @@ const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
         <Table>
           <TableHead>
             <TableRow>
-              <Cell placement='left' text='Date' />
-              <Cell placement='center' text='Weight' />
-              <Cell placement='right' text='Actions' />
+              <Cell placement='left'>Date</Cell>
+              <Cell placement='center'>Weight (lbs)</Cell>
+              <Cell placement='right'>Actions</Cell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -49,28 +49,25 @@ const EntriesTable: React.FC<{ entries: Entry[] }> = ({ entries }) => {
               : entries
             ).map((entry, index) => (
               <TableRow key={index}>
-                <Cell placement='left' text={entry.date.toString()} />
-                <Cell placement='center' text={entry.weight.toString()} />
-                <TableCell
-                  align='right'
-                  sx={{ display: 'flex', gap: '0.5rem', }}
-                >
+                <Cell placement='left'>{entry.date.toString()}</Cell>
+                <Cell placement='center'>{entry.weight}</Cell>
+                <Cell placement='right'>
                   <Button
-                    size='small'
+                    variant='contained'
+                    onClick={() => setModalState({ type: REDUCER_ACTION_TYPES.OPEN_EDIT, payload: entry })}
+                    className='editButton'
+                    sx={{ marginRight: { sm: '0.25rem' } }}
+                  >
+                    Edit
+                  </Button>
+                  <Button
                     variant='contained'
                     color='error'
                     onClick={() => setModalState({ type: REDUCER_ACTION_TYPES.OPEN_DELETE, payload: entry })}
                   >
                     Delete
                   </Button>
-                  <Button
-                    size='small'
-                    variant='contained'
-                    onClick={() => setModalState({ type: REDUCER_ACTION_TYPES.OPEN_EDIT, payload: entry })}
-                  >
-                    Edit
-                  </Button>
-                </TableCell>
+                </Cell>
               </TableRow>
             ))}
           </TableBody>
