@@ -9,11 +9,11 @@ const AuthButton: React.FC<Props> = ({ label, fn }) => {
   return (
     <Button
       color='inherit'
-      sx={{
-        fontSize: '1.125rem',
-        letterSpacing: '0.1rem'
-      }}
       onClick={fn}
+      sx={{
+        letterSpacing: '0.1rem',
+        fontSize: { xs: '0.9rem', md: '1rem', lg: '1.125rem' }
+      }}
     >
       {label}
     </Button>

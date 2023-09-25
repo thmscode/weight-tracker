@@ -4,7 +4,13 @@ import NavButton from './NavButton';
 
 const PageNavigation = () => {
   return (
-    <Stack direction='row' spacing={3} sx={{ flexGrow: 1 }}>
+    <Stack
+      direction='row'
+      sx={{
+        flexGrow: 1,
+        gap: { sm: '0.25rem', lg: '1.5rem' }
+      }}
+    >
       {NAV_ROUTES.map((route, index) => (
         <NavButton
           key={index}

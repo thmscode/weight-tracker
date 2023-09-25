@@ -19,7 +19,10 @@ const AuthorizedActions = () => {
   const { logout } = useAuth0();
 
   return (
-    <Stack direction='row' spacing={3}>
+    <Stack
+      direction='row'
+      sx={{ gap: { sm: '0.25rem', lg: '1.5rem' } }}
+    >
       <NavButton
         key='dashboard'
         href='/dashboard'

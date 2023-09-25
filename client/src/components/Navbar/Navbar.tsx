@@ -9,8 +9,8 @@ const Navbar = () => {
     <AppBar
       position='static'
       sx={{
-        py: 1,
-        px: 24
+        paddingY: '1rem',
+        paddingX: { sm: '1rem', md: '2rem', lg: '8rem' }
       }}
     >
       <Toolbar>

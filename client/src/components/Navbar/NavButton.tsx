@@ -11,8 +11,8 @@ const NavButton: React.FC<Props> = ({ href, label }) => {
       href={href}
       color='inherit'
       sx={{
-        fontSize: '1.125rem',
-        letterSpacing: '0.1rem'
+        letterSpacing: '0.1rem',
+        fontSize: { xs: '0.9rem', md: '1rem', lg: '1.125rem' }
       }}
     >
       {label}
