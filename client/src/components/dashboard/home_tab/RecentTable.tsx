@@ -18,14 +18,26 @@ type Props = {
 
 const RecentTable: React.FC<Props> = ({ data, handleOpen }) => {
   return (
-    <Box display='flex' flexDirection='column'>
-      <Typography variant='h6'>Recent Entries</Typography>
+    <Box
+      display='flex'
+      flexDirection='column'
+      sx={{ minWidth: { xs: '100%', md: '25%' } }}>
+      <Typography
+        variant='h6'
+        marginBottom='0.5rem'
+        sx={{
+          textDecoration: 'underline',
+          fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' },
+        }}
+      >
+        Recent Entries
+      </Typography>
       <TableContainer>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell>Weight (lbs)</TableCell>
+              <TableCell align='left'>Date</TableCell>
+              <TableCell align='right'>Weight</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -33,7 +45,7 @@ const RecentTable: React.FC<Props> = ({ data, handleOpen }) => {
               data.map((entry, index) => (
                 <TableRow key={index}>
                   <TableCell align='left'>{entry.date}</TableCell>
-                  <TableCell align='right'>{entry.weight}</TableCell>
+                  <TableCell align='right'>{entry.weight} lbs</TableCell>
                 </TableRow>
               )) :
               <Typography mt='0.5rem'>No data yet!</Typography>}
@@ -42,7 +54,7 @@ const RecentTable: React.FC<Props> = ({ data, handleOpen }) => {
       </TableContainer>
       <Button
         variant='contained'
-        sx={{ alignSelf: 'end', mt: '1rem' }}
+        sx={{ alignSelf: 'center', mt: { xs: '1rem', lg: '1.5rem' } }}
         onClick={handleOpen}
       >
         Add New Entry

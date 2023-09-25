@@ -91,7 +91,7 @@ const EditUserModal: React.FC<Props> = ({ open, handleClose, data }) => {
                 </div>
               ) : null}
             </Box>
-            <Box mt='1rem' display='flex' justifyContent='center' gap='0.75rem'>
+            <Box display='flex' justifyContent='center' gap='0.75rem'>
               <Button
                 type='submit'
                 variant='contained'

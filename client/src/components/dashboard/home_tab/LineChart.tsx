@@ -10,8 +10,17 @@ const LineChart: React.FC<{ data: FormattedEntry[] }> = ({ data }) => {
   const getMax = (data: FormattedEntry[]) => parseInt(data.reduce((prev, curr) => prev.weight > curr.weight ? prev : curr).weight);
 
   return (
-    <Box minWidth='80%'>
-      <Typography variant='h6'>Weight Over Time</Typography>
+    <Box sx={{ minWidth: { xs: '100%', md: '75%' } }}>
+      <Typography
+        variant='h6'
+        marginBottom='0.5rem'
+        sx={{
+          textDecoration: 'underline',
+          fontSize: { xs: '1rem', sm: '1.125rem', md: '1.25rem' },
+        }}
+      >
+        Weight Over Time
+      </Typography>
       {data && <Line data={{
         labels: data.map((entry) => entry.date),
         datasets: [

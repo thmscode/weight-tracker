@@ -15,9 +15,13 @@ const Info: React.FC<{ userData: UserObj }> = ({ userData }) => {
     <>
       <Box
         display='flex'
-        justifyContent='space-between'
-        px='6rem'
-        my='2rem'
+        sx={{
+          marginY: { xs: '1rem', sm: '2rem' },
+          paddingX: { md: '6rem' },
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: { xs: 'start', sm: 'space-between' },
+          gap: { xs: '0.25rem', sm: '0rem' }
+        }}
       >
         <UserInfoColumn
           data={[
@@ -27,12 +31,12 @@ const Info: React.FC<{ userData: UserObj }> = ({ userData }) => {
         />
         <UserInfoColumn
           data={[
-            { label: 'Height (in)', info: userData.height },
-            { label: 'Weight (lbs)', info: userData.weight }
+            { label: 'Height(in)', info: userData.height },
+            { label: 'Weight(lbs)', info: userData.weight }
           ]}
         />
         <UserInfoColumn data={[{ label: 'BMI', info: userData.bmi }]} />
-        <Box>
+        <Box sx={{ alignSelf: { sm: 'center' } }}>
           <Button variant='contained' onClick={handleOpen}>Edit</Button>
         </Box>
       </Box>
