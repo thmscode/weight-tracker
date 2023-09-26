@@ -64,11 +64,11 @@ const Middle = () => {
         >
           <SellingPoint>
             <Subheader text='set your goals' />
-            <GrFlag className='icon' />
+            <GrFlag className='homepage-icon' />
           </SellingPoint>
           <SellingPoint>
             <Subheader text='learn about exercise' />
-            <MdSchool className='icon' />
+            <MdSchool className='homepage-icon' />
           </SellingPoint>
         </Box>
         <Box
@@ -81,11 +81,11 @@ const Middle = () => {
         >
           <SellingPoint>
             <Subheader text='track your weight' />
-            <BsJournalRichtext className='icon' />
+            <BsJournalRichtext className='homepage-icon' />
           </SellingPoint>
           <SellingPoint>
             <Subheader text='achieve your goals' />
-            <BiLineChartDown className='icon' />
+            <BiLineChartDown className='homepage-icon' />
           </SellingPoint>
         </Box>
       </Box>
