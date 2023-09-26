@@ -5,7 +5,7 @@ import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
 const Logo = () => {
   return (
     <Box display='flex' alignItems='center'>
-      <MonitorWeightIcon />
+      <MonitorWeightIcon className='logo-icon' />
       <Typography
         color='inherit'
         variant='h5'
@@ -14,7 +14,7 @@ const Logo = () => {
         href='/'
         sx={{
           textDecoration: 'none',
-          fontSize: { xs: '1.125rem', md: '1.5rem' },
+          fontSize: { xs: '0.9rem', sm: '1.125rem', md: '1.5rem' },
           marginRight: { sm: '0.5rem', md: '1rem', lg: '1.5rem' },
           fontWeight: { md: '600' },
         }}

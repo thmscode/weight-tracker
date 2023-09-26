@@ -1,6 +1,6 @@
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Logo from "./Logo";
+import Logo from "../Logo";
 import UserTools from "./UserTools";
 import PageNavigation from "./PageNavigation";
 
