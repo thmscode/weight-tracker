@@ -6,6 +6,12 @@ export const NAV_ROUTES: NameValueObj[] = [
   { name: 'exercises', value: '/exercises' }
 ];
 
+export const MOBILE_NAV_ROUTES: NameValueObj[] = [
+  { name: 'home', value: '/' },
+  { name: 'bmi', value: '/bmi' },
+  { name: 'exercises', value: '/exercises' }
+];
+
 // BMI Page
 export const HEADERS: string[] = ['Classification', 'BMI'];
 
