@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import { useState } from "react";
 import { AppBar, Divider, Drawer, Link, List, ListItem, ListItemButton, ListItemText, Toolbar } from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
-import { MOBILE_NAV_ROUTES } from '../../utils/constants';
+import { MOBILE_NAV_ROUTES } from '../../../utils/constants';
 
 const NavLink: React.FC<{ label: string, link: string }> = ({ label, link }) => {
   return (
