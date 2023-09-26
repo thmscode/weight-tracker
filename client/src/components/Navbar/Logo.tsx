@@ -1,6 +1,6 @@
+import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import MonitorWeightIcon from '@mui/icons-material/MonitorWeight';
-import { Box } from '@mui/material';
 
 const Logo = () => {
   return (

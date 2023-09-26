@@ -49,10 +49,12 @@ const Hero = () => {
 
   return (
     <Box
-      mt='3rem'
       display='flex'
       justifyContent='space-between'
-      sx={{ flexDirection: { xs: 'column', md: 'row' } }}
+      sx={{
+        flexDirection: { xs: 'column', md: 'row' },
+        marginTop: { md: '3rem' }
+      }}
     >
       <Box
         py='4rem'
