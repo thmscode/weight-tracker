@@ -41,3 +41,8 @@ TRACKER is a full-stack (offline) fitness web application where users can explor
 * Server Directory:
   * Compile: `npm run build`
   * Start: `npm run start`
+
+## Notes
+* UI flashes when visiting different 'pages' on the app while unauthenticated
+  * Suspected Cause: `isLoading` from `Auth0`
+  * Fix: Not exactly sure how to fix this issue
