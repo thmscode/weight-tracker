@@ -4,25 +4,25 @@ const { Schema } = mongoose;
 const userSchema = new Schema({
   first_name: {
     type: String,
-    required: true
+    required: true,
   },
   last_name: {
     type: String,
-    required: true
+    required: true,
   },
   full_name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   id: {
     type: String,
     requireD: true,
-    unique: true
+    unique: true,
   },
   weight: Number,
   height: Number,
@@ -30,10 +30,10 @@ const userSchema = new Schema({
   weight_entries: [
     {
       date: { type: Date, required: true, unique: true, sparse: true },
-      weight: { type: Number, required: true }
-    }
-  ]
-})
+      weight: { type: Number, required: true },
+    },
+  ],
+});
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 export default User;
