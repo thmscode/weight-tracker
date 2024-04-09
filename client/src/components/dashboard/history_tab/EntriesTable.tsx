@@ -14,7 +14,7 @@ import { CustomTablePagination } from "./CustomTablePagination";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
 import { INITIAL_REDUCER_STATE, REDUCER_ACTION_TYPES } from "../../../constants";
-import { reducer } from "../../../utils/fn";
+import { reducer } from "../../../utils/reducer";
 
 type Align = "center" | "left" | "right" | "justify" | "inherit" | undefined;
 
