@@ -21,6 +21,6 @@ export const validation = (schema: ObjectSchema<any>) =>
       await schema.validate(body, { abortEarly: true });
       return next();
     } catch (e) {
-      res.status(400).json({ error: "Request body failed validation", data: null });
+      return res.status(400).json({ error: true, data: null, msg: "Request body failed validation" });
     }
   };
