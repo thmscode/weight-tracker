@@ -2,10 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { HOMEPAGE_BLURBS } from "../../constants";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Blurb: React.FC<{ header: string; text: string }> = ({
-  header,
-  text,
-}) => {
+const Blurb: React.FC<{ header: string; text: string }> = ({ header, text }) => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" gap=".75rem">
       <Typography

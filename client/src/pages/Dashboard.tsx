@@ -3,8 +3,8 @@ import LoadingSpinner from "../components/ux/LoadingSpinner";
 import { useState } from "react";
 import ContentContainer from "../components/ui/ContentContainer";
 import { Box, Tab, Tabs } from '@mui/material';
-import HomeTab from '../components/dashboard/home_tab/HomeTab';
-import HistoryTab from "../components/dashboard/history_tab/HistoryTab";
+import HomeTab from '../components/dashboard/default/HomeTab';
+import HistoryTab from "../components/dashboard/history/HistoryTab";
 
 const Dashboard = () => {
   const [value, setValue] = useState<number>(0);
