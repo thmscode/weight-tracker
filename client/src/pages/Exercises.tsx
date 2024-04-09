@@ -1,4 +1,4 @@
-import ContentContainer from "../components/ContentContainer";
+import ContentContainer from "../components/ui/ContentContainer";
 import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { TYPES, MUSCLES, DIFFICULTIES } from "../constants";
@@ -7,7 +7,7 @@ import { Exercise } from "../types";
 import { Formik, Form } from "formik";
 import Dropdown from "../components/exercises/Dropdown";
 import axios from 'axios';
-import PageHeader from "../components/PageHeader";
+import PageHeader from "../components/ui/PageHeader";
 import { formatInputValue, constructURL } from "../utils/fn";
 
 const Message: React.FC<{ children: React.ReactNode }> = ({ children }) => {

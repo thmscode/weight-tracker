@@ -1,5 +1,5 @@
 import React from "react";
-import ContentContainer from "../components/ContentContainer";
+import ContentContainer from "../components/ui/ContentContainer";
 import { Box, Link, Typography } from "@mui/material";
 import { STATUS_CODES } from "../constants";
 

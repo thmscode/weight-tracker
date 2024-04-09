@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "../components/ux/LoadingSpinner";
 import { useState } from "react";
-import ContentContainer from "../components/ContentContainer";
+import ContentContainer from "../components/ui/ContentContainer";
 import { Box, Tab, Tabs } from '@mui/material';
 import HomeTab from '../components/dashboard/home_tab/HomeTab';
 import HistoryTab from "../components/dashboard/history_tab/HistoryTab";

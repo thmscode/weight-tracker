@@ -1,8 +1,8 @@
 import { withAuthenticationRequired } from "@auth0/auth0-react";
 import { ComponentType } from 'react';
-import LoadingSpinner from "./LoadingSpinner";
+import LoadingSpinner from "../ux/LoadingSpinner";
 
-const AuthenticationGuard: React.FC<{ component: ComponentType }> = ({ component }) => {
+const Guard: React.FC<{ component: ComponentType }> = ({ component }) => {
   const Component = withAuthenticationRequired(component, {
     onRedirecting: () => <LoadingSpinner />
   });
@@ -10,4 +10,4 @@ const AuthenticationGuard: React.FC<{ component: ComponentType }> = ({ component
   return <Component />
 }
 
-export default AuthenticationGuard;
+export default Guard;

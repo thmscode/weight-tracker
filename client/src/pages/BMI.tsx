@@ -1,7 +1,7 @@
 import React from "react";
-import ContentContainer from "../components/ContentContainer";
+import ContentContainer from "../components/ui/ContentContainer";
 import { Box, Link, Typography } from "@mui/material";
-import PageHeader from "../components/PageHeader";
+import PageHeader from "../components/ui/PageHeader";
 import BMIChart from '../components/bmi/BMIChart';
 
 const SubHeader: React.FC<{ text: string }> = ({ text }) => {
