@@ -1,11 +1,6 @@
 import Button from '@mui/material/Button';
 
-type Props = {
-  label: string;
-  fn: () => Promise<void>;
-};
-
-const AuthButton: React.FC<Props> = ({ label, fn }) => {
+const AuthButton: React.FC<{ label: string; fn: () => Promise<void> }> = ({ label, fn }) => {
   return (
     <Button
       color='inherit'

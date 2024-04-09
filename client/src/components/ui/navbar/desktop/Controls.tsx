@@ -37,10 +37,10 @@ const AuthorizedActions = () => {
   );
 }
 
-const UserTools = () => {
+const Controls = () => {
   const { isAuthenticated } = useAuth0();
 
   return isAuthenticated ? <AuthorizedActions /> : <UnauthorizedActions />
 }
 
-export default UserTools;
+export default Controls;
