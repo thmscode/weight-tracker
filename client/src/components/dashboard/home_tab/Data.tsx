@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import RecentTable from './RecentTable';
 import LineChart from './LineChart';
-import { Entry, FormattedEntry } from '../../../utils/types';
+import { Entry, FormattedEntry } from '../../../types';
 import NewEntryModal from './NewEntryModal';
 
 const formatEntries = (entries: Entry[]): FormattedEntry[] => {

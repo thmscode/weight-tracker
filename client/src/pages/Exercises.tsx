@@ -1,9 +1,9 @@
 import ContentContainer from "../components/ContentContainer";
 import React, { useState } from "react";
 import { Box, Button, Typography } from "@mui/material";
-import { TYPES, MUSCLES, DIFFICULTIES } from "../utils/constants";
+import { TYPES, MUSCLES, DIFFICULTIES } from "../constants";
 import Card from "../components/exercises/Card";
-import { Exercise } from "../utils/types";
+import { Exercise } from "../types";
 import { Formik, Form } from "formik";
 import Dropdown from "../components/exercises/Dropdown";
 import axios from 'axios';

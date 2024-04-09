@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import { Exercise } from '../../utils/types';
+import { Exercise } from '../../types';
 import Details from './Details';
 
 const Card: React.FC<{ exercise: Exercise }> = ({ exercise }) => {

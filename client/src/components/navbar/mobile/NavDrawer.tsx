@@ -4,7 +4,7 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import { useAuth0 } from '@auth0/auth0-react';
-import { MOBILE_NAV_ROUTES } from '../../../utils/constants';
+import { MOBILE_NAV_ROUTES } from '../../../constants';
 import NavItem from './NavItem';
 import AuthItem from './AuthItem';
 

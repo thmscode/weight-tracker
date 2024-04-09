@@ -1,6 +1,6 @@
 import { Box, Button } from '@mui/material';
 import UserInfoColumn from './UserInfoColumn';
-import { UserObj } from '../../../utils/types';
+import { UserObj } from '../../../types';
 import { useState } from 'react';
 import EditUserModal from './EditUserModal';
 

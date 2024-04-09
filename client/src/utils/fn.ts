@@ -1,5 +1,5 @@
-import { ModalAction, ModalState } from "./types";
-import { REDUCER_ACTION_TYPES } from "./constants";
+import { ModalAction, ModalState } from "../types";
+import { REDUCER_ACTION_TYPES } from "../constants";
 
 /*
   Function that turns a date string and converts it into an array

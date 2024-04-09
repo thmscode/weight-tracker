@@ -7,9 +7,9 @@ import {
 } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import axios from "axios";
-import { HistoryModalProps } from '../../../utils/types';
+import { HistoryModalProps } from '../../../types';
 import { useAuth0 } from '@auth0/auth0-react';
-import { EDIT_ENTRY_VALIDATION } from '../../../utils/yup-schemas';
+import { EDIT_ENTRY_VALIDATION } from '../../../yup-schemas';
 import { renderErrorToast, renderInfoToast, renderSuccessToast } from '../../../utils/toasts';
 import { getDateArray } from '../../../utils/fn';
 

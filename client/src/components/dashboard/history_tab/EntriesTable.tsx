@@ -9,11 +9,11 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { Entry } from "../../../utils/types";
+import { Entry } from "../../../types";
 import { CustomTablePagination } from "./CustomTablePagination";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
-import { INITIAL_REDUCER_STATE, REDUCER_ACTION_TYPES } from "../../../utils/constants";
+import { INITIAL_REDUCER_STATE, REDUCER_ACTION_TYPES } from "../../../constants";
 import { reducer } from "../../../utils/fn";
 
 type Align = "center" | "left" | "right" | "justify" | "inherit" | undefined;

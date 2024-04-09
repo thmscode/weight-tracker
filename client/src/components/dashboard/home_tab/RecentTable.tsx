@@ -9,7 +9,7 @@ import {
   TableRow,
   Typography
 } from '@mui/material';
-import { FormattedEntry } from '../../../utils/types';
+import { FormattedEntry } from '../../../types';
 
 type Props = {
   data: FormattedEntry[];

@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Divider } from "@mui/material";
 import { useEffect, useState } from "react";
-import { TabProps, UserObj } from "../../../utils/types";
+import { TabProps, UserObj } from "../../../types";
 import axios from "axios";
 import Info from './Info';
 import Data from './Data';

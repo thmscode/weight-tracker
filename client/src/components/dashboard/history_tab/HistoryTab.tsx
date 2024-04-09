@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Entry, TabProps } from "../../../utils/types";
+import { Entry, TabProps } from "../../../types";
 import axios from "axios";
 import EntriesTable from './EntriesTable';
 import { renderErrorToast, renderSuccessToast } from '../../../utils/toasts';

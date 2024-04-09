@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import { Box, Button, Typography } from '@mui/material';
-import { HERO_HEADER, HERO_TEXT } from '../../utils/constants';
+import { HERO_HEADER, HERO_TEXT } from '../../constants';
 
 const Header = () => {
   return (

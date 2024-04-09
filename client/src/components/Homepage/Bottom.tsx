@@ -1,5 +1,5 @@
 import { Box, Button, Typography } from '@mui/material';
-import { HOMEPAGE_BLURBS } from '../../utils/constants';
+import { HOMEPAGE_BLURBS } from '../../constants';
 import { useAuth0 } from '@auth0/auth0-react';
 
 type Props = {

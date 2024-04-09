@@ -1,7 +1,7 @@
 import React from "react";
 import ContentContainer from "../components/ContentContainer";
 import { Box, Link, Typography } from "@mui/material";
-import { STATUS_CODES } from "../utils/constants";
+import { STATUS_CODES } from "../constants";
 
 const Header: React.FC<{ text: string }> = ({ text }) => {
   return (

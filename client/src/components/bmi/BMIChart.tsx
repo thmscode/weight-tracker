@@ -6,7 +6,7 @@ import {
   TableHead,
   TableRow
 } from '@mui/material';
-import { HEADERS, CATEGORIES } from '../../utils/constants';
+import { HEADERS, CATEGORIES } from '../../constants';
 
 const Chart = () => {
   return (

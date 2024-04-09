@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack';
-import { NAV_ROUTES } from '../../../utils/constants';
+import { NAV_ROUTES } from '../../../constants';
 import NavButton from './NavButton';
 
 const PageNavigation = () => {

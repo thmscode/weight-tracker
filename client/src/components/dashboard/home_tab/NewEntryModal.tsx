@@ -8,7 +8,7 @@ import {
 import { Field, Form, Formik } from 'formik';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import { NEW_ENTRY_VALIDATION } from "../../../utils/yup-schemas";
+import { NEW_ENTRY_VALIDATION } from "../../../yup-schemas";
 import { renderErrorToast, renderSuccessToast } from "../../../utils/toasts";
 import { getDateArray } from "../../../utils/fn";
 

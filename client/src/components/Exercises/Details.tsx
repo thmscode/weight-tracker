@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { NameValueObj } from '../../utils/types';
+import { NameValueObj } from '../../types';
 
 type Props = {
   muscle: string;
