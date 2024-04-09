@@ -8,6 +8,7 @@ import { Formik, Form } from "formik";
 import Dropdown from "../components/exercises/Dropdown";
 import axios from 'axios';
 import PageHeader from "../components/PageHeader";
+import { formatInputValue, constructURL } from "../utils/fn";
 
 const Message: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
@@ -25,19 +26,6 @@ const Message: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const Exercises = () => {
   const [exerciseList, setExerciseList] = useState<Exercise[] | null>(null);
-
-  const formatInputValue = (string: string): string => string.toLowerCase().split(' ').join('_');
-
-  const constructURL = (type: string, muscle: string, difficulty: string): string => {
-    const BASE_URL: string = 'https://api.api-ninjas.com/v1/exercises';
-    if (type === '' && muscle === '' && difficulty === '') return BASE_URL;
-    else {
-      const typeParam = type !== '' ? `type=${type}&` : '';
-      const muscleParam = muscle !== '' ? `muscle=${muscle}&` : '';
-      const difficultyParam = difficulty !== '' ? `difficulty=${difficulty}` : '';
-      return BASE_URL + '?' + typeParam + muscleParam + difficultyParam;
-    }
-  };
 
   const getExercises = (url: string): void => {
     axios.get(url, { headers: { 'X-Api-Key': process.env.REACT_APP_API_NINJAS_KEY } })
