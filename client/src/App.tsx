@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Root from './layouts/Root';
 import LoadingSpinner from './components/LoadingSpinner';
 import ErrorPage from './pages/ErrorPage';
-import Homepage from './pages/Homepage';
+import Home from './pages/Home';
 import BMI from './pages/BMI';
 import Exercises from './pages/Exercises';
 import AuthenticationGuard from './components/AuthenticationGuard';
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Homepage /> },
+      { path: "/", element: <Home /> },
       { path: "/bmi", element: <BMI /> },
       { path: "/exercises", element: <Exercises /> },
       { path: "/dashboard", element: <AuthenticationGuard component={Dashboard} /> },

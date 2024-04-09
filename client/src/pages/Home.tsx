@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
 import ContentContainer from "../components/ContentContainer";
 import Hero from "../components/homepage/Hero";
-import Bottom from "../components/homepage/Bottom";
-import Middle from "../components/homepage/Middle";
+import ProductDescription from "../components/homepage/ProductDescription";
+import SellingPoints from "../components/homepage/SellingPoints";
 
-const Homepage = () => {
+const Home = () => {
   return (
     <ContentContainer>
       <Box
@@ -13,11 +13,11 @@ const Homepage = () => {
         sx={{ gap: { xs: '2rem', sm: '4rem', md: '7rem' } }}
       >
         <Hero />
-        <Middle />
-        <Bottom />
+        <SellingPoints />
+        <ProductDescription />
       </Box>
     </ContentContainer>
   );
 }
 
-export default Homepage;
+export default Home;

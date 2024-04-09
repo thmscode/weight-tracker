@@ -4,7 +4,7 @@ import { MdSchool } from 'react-icons/md';
 import { BsJournalRichtext } from 'react-icons/bs';
 import { BiLineChartDown } from 'react-icons/bi';
 
-const SellingPoint: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+const Highlight: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   return (
     <Box
       display='flex'
@@ -31,7 +31,7 @@ const Subheader: React.FC<{ text: string }> = ({ text }) => {
   );
 }
 
-const Middle = () => {
+const SellingPoints = () => {
   return (
     <Box
       display='flex'
@@ -62,14 +62,14 @@ const Middle = () => {
             gap: { xs: '2rem', md: '4rem' }
           }}
         >
-          <SellingPoint>
+          <Highlight>
             <Subheader text='set your goals' />
             <GrFlag className='homepage-icon' />
-          </SellingPoint>
-          <SellingPoint>
+          </Highlight>
+          <Highlight>
             <Subheader text='learn about exercise' />
             <MdSchool className='homepage-icon' />
-          </SellingPoint>
+          </Highlight>
         </Box>
         <Box
           display='flex'
@@ -79,18 +79,18 @@ const Middle = () => {
             gap: { xs: '2rem', md: '4rem' }
           }}
         >
-          <SellingPoint>
+          <Highlight>
             <Subheader text='track your weight' />
             <BsJournalRichtext className='homepage-icon' />
-          </SellingPoint>
-          <SellingPoint>
+          </Highlight>
+          <Highlight>
             <Subheader text='achieve your goals' />
             <BiLineChartDown className='homepage-icon' />
-          </SellingPoint>
+          </Highlight>
         </Box>
       </Box>
     </Box>
   );
 }
 
-export default Middle;
+export default SellingPoints;
