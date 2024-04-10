@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom';
-import Navbar from '../components/ui/navbar/Navbar';
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/ui/navbar/Navbar";
 
 const Root = () => {
   return (
@@ -8,6 +8,6 @@ const Root = () => {
       <Outlet />
     </>
   );
-}
+};
 
 export default Root;
