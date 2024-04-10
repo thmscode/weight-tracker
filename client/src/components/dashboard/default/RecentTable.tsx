@@ -11,12 +11,7 @@ import {
 } from '@mui/material';
 import { FormattedEntry } from '../../../types';
 
-type Props = {
-  data: FormattedEntry[];
-  handleOpen: () => void;
-}
-
-const RecentTable: React.FC<Props> = ({ data, handleOpen }) => {
+const RecentTable: React.FC<{ data: FormattedEntry[]; handleOpen: () => void }> = ({ data, handleOpen }) => {
   return (
     <Box
       display='flex'

@@ -4,30 +4,7 @@ import RecentTable from './RecentTable';
 import LineChart from './LineChart';
 import { Entry, FormattedEntry } from '../../../types';
 import NewEntryModal from './NewEntryModal';
-
-const formatEntries = (entries: Entry[]): FormattedEntry[] => {
-  const format = entries.map(entry => {
-    return {
-      date: new Date(entry.date).toISOString().split('T')[0].toString(),
-      weight: entry.weight.toString()
-    }
-  });
-  return format;
-};
-
-const getRecentEntries = (entries: Entry[]): FormattedEntry[] => {
-  const max = 5;
-  const data = formatEntries(entries);
-
-  if (data.length <= max) return data.reverse();
-  else {
-    const recent = [];
-    for (let i = data.length - 1; i > data.length - 1 - max; i--) {
-      recent.push(data[i]);
-    }
-    return recent;
-  }
-};
+import { formatEntries, getRecentEntries } from '../../../utils/fn';
 
 const Data: React.FC<{ weightEntries: Entry[] }> = ({ weightEntries }) => {
   const [chartData, setChartData] = useState<FormattedEntry[] | null>(null);

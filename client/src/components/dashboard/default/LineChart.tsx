@@ -2,13 +2,11 @@ import { Box, Typography } from '@mui/material';
 import { Line } from "react-chartjs-2";
 import { Chart, registerables } from 'chart.js';
 import { FormattedEntry } from '../../../types';
+import { getMax, getMin } from '../../../utils/fn';
 
 Chart.register(...registerables);
 
 const LineChart: React.FC<{ data: FormattedEntry[] }> = ({ data }) => {
-  const getMin = (data: FormattedEntry[]) => parseInt(data.reduce((prev, curr) => prev.weight < curr.weight ? prev : curr).weight);
-  const getMax = (data: FormattedEntry[]) => parseInt(data.reduce((prev, curr) => prev.weight > curr.weight ? prev : curr).weight);
-
   return (
     <Box sx={{ minWidth: { xs: '100%', md: '75%' } }}>
       <Typography

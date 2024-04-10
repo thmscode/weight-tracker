@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 
-interface DataObj {
+type DataObj = {
   label: string;
   info: string | number | null;
 };

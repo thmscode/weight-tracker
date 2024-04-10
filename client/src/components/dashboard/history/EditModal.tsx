@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  TextField,
-  Typography
-} from '@mui/material';
+import { Box, Button, Dialog, TextField, Typography } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import axios from "axios";
 import { HistoryModalProps } from '../../../types';

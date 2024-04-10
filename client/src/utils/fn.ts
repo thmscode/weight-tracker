@@ -1,3 +1,5 @@
+import { Entry, FormattedEntry } from "../types";
+
 /**
  * getDateArray
  * * Function that accepts a date string and converts it into an array
@@ -28,11 +30,7 @@ export const formatInputValue = (string: string): string =>
  * @param difficulty
  * @returns API URL string
  */
-export const constructURL = (
-  type: string,
-  muscle: string,
-  difficulty: string
-): string => {
+export const constructURL = (type: string, muscle: string, difficulty: string): string => {
   const BASE_URL: string = "https://api.api-ninjas.com/v1/exercises";
   if (type === "" && muscle === "" && difficulty === "") return BASE_URL;
   else {
@@ -42,3 +40,64 @@ export const constructURL = (
     return BASE_URL + "?" + typeParam + muscleParam + difficultyParam;
   }
 };
+
+/**
+ * formatEntries
+ * * Function that accepts an array of Entry values and formats each element so it can be displayed
+ * * Used in /components/dashboard/default/Data.tsx
+ * @param entries
+ * @returns Formatted array of entries
+ */
+export const formatEntries = (entries: Entry[]): FormattedEntry[] => {
+  const format = entries.map((entry) => {
+    return {
+      date: new Date(entry.date).toISOString().split("T")[0].toString(),
+      weight: entry.weight.toString(),
+    };
+  });
+  return format;
+};
+
+/**
+ * getRecentEntries
+ * * Used in /components/dashboard/default/Data.tsx
+ * @param entries An array of Entry values
+ * @returns A subset of the array
+ */
+export const getRecentEntries = (entries: Entry[]): FormattedEntry[] => {
+  const max = 5;
+  const data = formatEntries(entries);
+
+  if (data.length <= max) return data.reverse();
+  else {
+    const recent = [];
+    for (let i = data.length - 1; i > data.length - 1 - max; i--) {
+      recent.push(data[i]);
+    }
+    return recent;
+  }
+};
+
+/**
+ * getMin
+ * * Used in /components/dashboard/default/LineChart.tsx
+ * @param data
+ * @returns The object element that has the smallest weight property value
+ */
+export const getMin = (data: FormattedEntry[]) =>
+  parseInt(
+    data.reduce((prev, curr) => (prev.weight < curr.weight ? prev : curr))
+      .weight
+  );
+
+/**
+ * getMax
+ * * Used in /components/dashboard/default/LineChart.tsx
+ * @param data
+ * @returns The object element that has the greatest weight property value
+ */
+export const getMax = (data: FormattedEntry[]) =>
+  parseInt(
+    data.reduce((prev, curr) => (prev.weight > curr.weight ? prev : curr))
+      .weight
+  );

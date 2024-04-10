@@ -1,9 +1,4 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  Typography
-} from '@mui/material';
+import { Box, Button, Dialog, Typography } from '@mui/material';
 import axios from "axios";
 import { Entry, HistoryModalProps } from '../../../types';
 import { useAuth0 } from '@auth0/auth0-react';
