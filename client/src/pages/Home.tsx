@@ -8,9 +8,9 @@ const Home = () => {
   return (
     <ContentContainer>
       <Box
-        display='flex'
-        flexDirection='column'
-        sx={{ gap: { xs: '2rem', sm: '4rem', md: '7rem' } }}
+        display="flex"
+        flexDirection="column"
+        sx={{ gap: { xs: "2rem", sm: "4rem", md: "7rem" } }}
       >
         <Hero />
         <SellingPoints />
@@ -18,6 +18,6 @@ const Home = () => {
       </Box>
     </ContentContainer>
   );
-}
+};
 
 export default Home;

@@ -3,25 +3,6 @@ import ContentContainer from "../components/ui/ContentContainer";
 import { Box, Link, Typography } from "@mui/material";
 import { STATUS_CODES } from "../constants";
 
-const Header: React.FC<{ text: string }> = ({ text }) => {
-  return (
-    <Typography
-      variant="h4"
-      fontWeight={600}
-      sx={{
-        fontSize: {
-          xs: "1.25rem",
-          sm: "1.5rem",
-          md: "1.75rem",
-          lg: "2rem",
-        },
-      }}
-    >
-      {text}
-    </Typography>
-  );
-};
-
 const Body: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <Typography
@@ -37,7 +18,20 @@ const ErrorPage = () => {
   return (
     <ContentContainer>
       <Box display="flex" flexDirection="column" gap="1.5rem" mt="1rem">
-        <Header text="Oops, looks like something went wrong!" />
+        <Typography
+          variant="h4"
+          fontWeight={600}
+          sx={{
+            fontSize: {
+              xs: "1.25rem",
+              sm: "1.5rem",
+              md: "1.75rem",
+              lg: "2rem",
+            },
+          }}
+        >
+          Oops, looks like something went wrong!
+        </Typography>
         <Body>
           We're not sure what happened but <em>something</em> happened...
         </Body>
