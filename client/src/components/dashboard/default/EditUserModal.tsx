@@ -3,7 +3,11 @@ import { Field, Form, Formik } from "formik";
 import { USER_DATA_VALIDATION } from "../../../yup-schemas";
 import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
-import { renderErrorToast, renderInfoToast, renderSuccessToast } from "../../../utils/toasts";
+import {
+  renderErrorToast,
+  renderInfoToast,
+  renderSuccessToast,
+} from "../../../utils/toasts";
 
 type Props = {
   open: boolean;

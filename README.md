@@ -43,6 +43,6 @@ TRACKER is a full-stack (offline) fitness web application where users can explor
   * Start: `npm run start`
 
 ## Notes
-* UI flashes when visiting different 'pages' on the app while unauthenticated
-  * Suspected Cause: `isLoading` from `Auth0`
-  * Fix: Not exactly sure how to fix this issue
+* UI flashes when visiting different pages on the application while unauthenticated (not logged in)
+  * Cause might be the `isLoading` hook from the `auth0-react` sdk
+  * Not exactly sure why this happens, nor how to fix it...
